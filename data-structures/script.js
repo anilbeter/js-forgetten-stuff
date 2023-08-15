@@ -54,6 +54,40 @@ const restaurant = {
   },
 };
 
+console.log('---------------OR----------------');
+// Use ANY data type, return ANY data type, short-circuiting
+console.log(3 || 'Anil'); // 3
+console.log('' || 'Anil'); // Anil
+console.log(true || 0); // true
+console.log(undefined || 0); // 0 -> Eğer hiç true value yoksa en sondaki valueyi veriyor
+
+console.log(undefined || 0 || '' || 'Hello' || 23 || null); // Hello
+// Görüldüğü gibi OR operatoru karşılaştığı ilk true değeri veriyor, hiç true yoksa en sondaki yanlış ifadeyi veriyor.
+
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1); // 10
+
+// Let's rewrite with short circuiting
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2); // 10;
+
+console.log('---------------AND----------------');
+console.log(0 && 'Anil'); // 0
+// OR operatorunun tam tersi çalışıyor, bulduğu ilk yanlış değeri veriyor
+console.log(23 && 'Anil'); // Anil
+// Hiç yanlış değeri yoksa, tıpkı OR'daki gibi en sondaki değeri veriyor
+console.log('Hello' && 23 && null && 'Adr!'); // null
+
+// Practical example
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushrooms', 'spinach');
+}
+
+restaurant.orderPizza && restaurant.orderPizza('mushroom', 'spinach');
+
+/*
+//////////////////////////////////////////////
+// Rest pattern and parameters
 // 1) Destructring
 
 // SPREAD, because on RIGHT side of =
@@ -101,7 +135,7 @@ restaurant.orderPizza('mushrooms');
 // mushrooms
 // []
 
-/*
+
 //////////////////////////////
 // Spread Operator
 const arr = [7, 8, 9];
