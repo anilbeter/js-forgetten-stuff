@@ -12,6 +12,10 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
+  order: function (starter, main) {
+    return [this.starterMenu[starter], this.mainMenu[main]];
+  },
+
   openingHours: {
     thu: {
       open: 12,
@@ -27,3 +31,54 @@ const restaurant = {
     },
   },
 };
+
+// Destructring arrays
+const arr = [2, 3, 4];
+// const a = arr[0];
+// const b = arr[1];
+// const c = arr[2];
+// console.log(a, b, c); // 2 3 4
+
+// with data structure
+const [x, y, z] = arr;
+console.log(x, y, z); // 2 3 4
+console.log(arr); // 2 3 4
+
+const [first, second] = restaurant.categories;
+console.log(first, second);
+// Italian Pizzeria
+
+// Eğer 1. ve 3.yü istiyorsam
+let [main, , secondary] = restaurant.categories;
+console.log(main, secondary);
+// Italian Vegetarian
+
+// Lets switch variables
+[secondary, main] = [main, secondary];
+console.log(main, secondary);
+// Vegetarian Italian
+
+console.log(restaurant.order(2, 0));
+// (2) ['Garlic Bread', 'Pizza']
+
+// Receive 2 return values from a function
+const [starter, mainCourse] = restaurant.order(2, 0);
+console.log(starter, mainCourse);
+// Garlic Bread Pizza
+
+// Nested Arrays Destructure
+const nested = [2, 4, [5, 6]];
+// const [i, , j] = nested;
+// console.log(i, j);
+// 2 [5, 6]
+
+const [i, , [j, k]] = nested;
+console.log(i, j, k);
+// 2 5 6
+
+// Default values
+const [p, q, r] = [8, 9];
+console.log(p, q, r); // 8 9 undefined
+
+const [o = 1, c = 1, v = 1] = [8, 9];
+console.log(o, c, v); // 8 9 1
