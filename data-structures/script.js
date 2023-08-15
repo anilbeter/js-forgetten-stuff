@@ -47,8 +47,63 @@ const restaurant = {
       close: 24,
     },
   },
+
+  orderPizza: function (mainIngredient, ...optionalIngredients) {
+    console.log(mainIngredient);
+    console.log(optionalIngredients);
+  },
 };
 
+// 1) Destructring
+
+// SPREAD, because on RIGHT side of =
+const arr = [1, 2, ...[3, 4]];
+
+// REST, because on LEFT side of =
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, others);
+// 1 2 [3, 4, 5]
+
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFood);
+// Pizza Risotto (4) ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad']
+// NOT: it does not include any skipped elements, rest pattern always must be the last in the destructring assignment
+// , , koyarak 1. indexi atladım ve 1. indexi dahil etmedi
+
+// Objects
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(sat, weekdays);
+// {open: 0, close: 24} {thu: {…}, fri: {…}}
+
+// 2) Functions
+const add = function (...numbers) {
+  let sum = 0;
+  for (const num of numbers) {
+    sum += num;
+  }
+  console.log(sum);
+};
+
+add(5, 7, 23); // 35
+add(2, 5); // 7
+add(5, 5, 34, 23, 54, 14); // 135
+
+const x = [23, 5, 7];
+add(...x); // 35
+
+restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
+// mushrooms
+// (3) ['onion', 'olives', 'spinach']
+restaurant.orderPizza('mushrooms');
+// mushrooms
+// []
+
+/*
+//////////////////////////////
+// Spread Operator
 const arr = [7, 8, 9];
 const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
 console.log(badNewArr); // (5) [1, 2, 7, 8, 9]
@@ -113,7 +168,7 @@ restaurantCopy.name = 'Ristorante Roma';
 console.log(restaurantCopy.name, restaurant.name);
 // Ristorante Roma Classico Italiano
 
-/*
+
 //////////////////////////////////
 // Destructring Objects
 // !!! Dikkat ettiysen orderDelivery fonksiyonunun parametreleri sırasıyla tam olarak uyuşmuyor, yani benim yazdığım sıralama farklı: orderDelivery: function ({ starterIndex, mainIndex, time, address }) Object'de sıralama önemsiz, array gibi index muhabbeti yok
