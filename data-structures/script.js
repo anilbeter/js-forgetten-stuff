@@ -27,6 +27,12 @@ const restaurant = {
     );
   },
 
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
+
   openingHours: {
     thu: {
       open: 12,
@@ -42,6 +48,74 @@ const restaurant = {
     },
   },
 };
+
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr); // (5) [1, 2, 7, 8, 9]
+
+const newGoodArr = [1, 2, ...arr];
+console.log(newGoodArr); // (5) [1, 2, 7, 8, 9]
+
+console.log(...newGoodArr); // 1 2 7 8 9
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci', 'Kebap'];
+console.log(newMenu);
+// (5) ['Pizza', 'Pasta', 'Risotto', 'Gnocci', 'Kebap']
+
+// Copy array
+const mainMenuCopy = [...restaurant.mainMenu];
+
+// Join 2 arrays
+const wholeMenu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(wholeMenu);
+// (7) ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad', 'Pizza', 'Pasta', 'Risotto']
+
+// Spread operator only works with iterables
+// Iterables are: arrays, strings, maps, sets, NOT objects
+const str = 'Anil';
+const letters = [...str];
+console.log(letters);
+// (4) ['A', 'n', 'i', 'l']
+console.log(...str);
+// A n i l
+// console.log(`${...str} Beter`); ---> ERROR
+// Multiple values separted by comma are usually only expected when we pass arguments into a function or when we build new array
+
+// Real word example
+const ingredients = [
+  prompt("Let's make pasta! Ingredient 1?"),
+  prompt('Ingredient 2?'),
+  prompt('Ingredient 3?'),
+];
+console.log(ingredients);
+
+restaurant.orderPasta(...ingredients);
+
+// Objects
+// Since ES2018, spread operators works with objects. Even though objects are not iterable
+const newRestaurant = { foundedIn: 1984, ...restaurant, founder: 'Cody Fern' };
+console.log(newRestaurant);
+// categories: (4) ['Italian', 'Pizzeria', 'Vegetarian', 'Organic']
+// foundedIn: 1984
+// founder: "Cody Fern"
+// location: "Via Angelo Tavanti 23, Firenze, Italy"
+// mainMenu: (3) ['Pizza', 'Pasta', 'Risotto']
+// name: "Classico Italiano"
+// openingHours: {thu: {…}, fri: {…}, sat: {…}}
+// order: ƒ (starter, main)
+// orderDelivery: ƒ ({ starterIndex = 1, mainIndex = 0, time = '23:00', address, })
+// orderPasta: ƒ (ing1, ing2, ing3)
+// starterMenu:
+// (4) ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad']
+
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = 'Ristorante Roma';
+console.log(restaurantCopy.name, restaurant.name);
+// Ristorante Roma Classico Italiano
+
+/*
+//////////////////////////////////
+// Destructring Objects
 // !!! Dikkat ettiysen orderDelivery fonksiyonunun parametreleri sırasıyla tam olarak uyuşmuyor, yani benim yazdığım sıralama farklı: orderDelivery: function ({ starterIndex, mainIndex, time, address }) Object'de sıralama önemsiz, array gibi index muhabbeti yok
 restaurant.orderDelivery({
   time: '22:30',
@@ -93,7 +167,7 @@ const {
 console.log(o, c);
 // 11 23
 
-/*
+
 // Destructring arrays
 const arr = [2, 3, 4];
 // const a = arr[0];
