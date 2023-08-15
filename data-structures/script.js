@@ -16,6 +16,17 @@ const restaurant = {
     return [this.starterMenu[starter], this.mainMenu[main]];
   },
 
+  orderDelivery: function ({
+    starterIndex = 1,
+    mainIndex = 0,
+    time = '23:00',
+    address,
+  }) {
+    console.log(
+      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+
   openingHours: {
     thu: {
       open: 12,
@@ -31,7 +42,58 @@ const restaurant = {
     },
   },
 };
+// !!! Dikkat ettiysen orderDelivery fonksiyonunun parametreleri sırasıyla tam olarak uyuşmuyor, yani benim yazdığım sıralama farklı: orderDelivery: function ({ starterIndex, mainIndex, time, address }) Object'de sıralama önemsiz, array gibi index muhabbeti yok
+restaurant.orderDelivery({
+  time: '22:30',
+  address: 'Via del Sole, 21',
+  mainIndex: 2,
+  starterIndex: 2,
+});
+// Order received! Garlic Bread and Risotto will be delivered to Via del Sole, 21 at 22:30
 
+// Get values with default values
+restaurant.orderDelivery({
+  address: 'Via del 23',
+  starterIndex: 1,
+});
+// Order received! Bruschetta and Pizza will be delivered to Via del 23 at 23:00
+
+///////////////////////////////////////////////////
+
+const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);
+// Classico Italiano {thu: {…}, fri: {…}, sat: {…}} (4) ['Italian', 'Pizzeria', 'Vegetarian', 'Organic']
+
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+console.log(restaurantName, hours, tags);
+// Classico Italiano {thu: {…}, fri: {…}, sat: {…}} (4) ['Italian', 'Pizzeria', 'Vegetarian', 'Organic']
+
+// Set default value
+const { menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters);
+// [] ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad']
+
+// Mutating variables
+let a = 111;
+let b = 999;
+const obj = { a: 23, b: 7, c: 14 };
+
+({ a, b } = obj);
+console.log(a, b);
+// 23 7
+
+// Nested objects
+const {
+  fri: { open: o, close: c },
+} = openingHours;
+console.log(o, c);
+// 11 23
+
+/*
 // Destructring arrays
 const arr = [2, 3, 4];
 // const a = arr[0];
@@ -82,3 +144,4 @@ console.log(p, q, r); // 8 9 undefined
 
 const [o = 1, c = 1, v = 1] = [8, 9];
 console.log(o, c, v); // 8 9 1
+*/
