@@ -58,7 +58,8 @@ const restaurant = {
 
 const rest1 = {
   name: 'Fern',
-  numGuests: 20,
+  // numGuests: 20,
+  numGuests: 0,
 };
 
 const rest2 = {
@@ -74,8 +75,8 @@ const rest2 = {
 // OR assigment operator
 rest1.numGuests ||= 10;
 rest2.numGuests ||= 10;
-console.log(rest1.numGuests); // 20
-console.log(rest2.numGuests); // 10
+console.log(rest1.numGuests); // 10
+// 0 ayarlamama rağmen 10 gösteriyor, çünkü JS'e göre 0 falsy value. Bundan nasıl kaçınabilirim?
 /*
 ///////////////////////////////////////
 // The Nullish Coalescing Operator (??)
