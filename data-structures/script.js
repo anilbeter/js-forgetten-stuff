@@ -54,6 +54,27 @@ const restaurant = {
   },
 };
 
+///////////////////////////////////////
+// The Nullish Coalescing Operator (??)
+restaurant.numGuests = 0;
+
+const guest = restaurant.numGuests || 10;
+console.log(guest);
+// output -> 10, ama benim misafirim 0. JS doğası gereği 0'ı falsy value olarak görüyor ve 0'ı atlıyor. Bu durumdan nasıl kaçınabilirim?
+
+// Nullish Coalescing Operator ile --->
+// Nullish: null and undefined (NOT include 0 or '')
+// Yani ?? kullanırsam 0 ve '' (boş string) falsy değil.
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
+// output -> 0
+
+console.log(null ?? 'Anil On Fire!');
+// Anil On Fire!
+
+/*
+///////////////////////////////////////
+// Short Circuting
 console.log('---------------OR----------------');
 // Use ANY data type, return ANY data type, short-circuiting
 console.log(3 || 'Anil'); // 3
@@ -85,7 +106,7 @@ if (restaurant.orderPizza) {
 
 restaurant.orderPizza && restaurant.orderPizza('mushroom', 'spinach');
 
-/*
+
 //////////////////////////////////////////////
 // Rest pattern and parameters
 // 1) Destructring
