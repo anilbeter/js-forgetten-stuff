@@ -53,7 +53,30 @@ const restaurant = {
     console.log(optionalIngredients);
   },
 };
+///////////////////////////////
+// Logical Assignment Operators
 
+const rest1 = {
+  name: 'Fern',
+  numGuests: 20,
+};
+
+const rest2 = {
+  name: 'Sky Burger',
+  owner: 'Cody Le',
+};
+
+// rest1.numGuests = rest1.numGuests || 10;
+// console.log(rest1.numGuests); --> 20
+// rest2.numGuests = rest2.numGuests || 10;
+// console.log(rest2.numGuests); --> 10
+
+// OR assigment operator
+rest1.numGuests ||= 10;
+rest2.numGuests ||= 10;
+console.log(rest1.numGuests); // 20
+console.log(rest2.numGuests); // 10
+/*
 ///////////////////////////////////////
 // The Nullish Coalescing Operator (??)
 restaurant.numGuests = 0;
@@ -72,7 +95,7 @@ console.log(guestCorrect);
 console.log(null ?? 'Anil On Fire!');
 // Anil On Fire!
 
-/*
+
 ///////////////////////////////////////
 // Short Circuting
 console.log('---------------OR----------------');
