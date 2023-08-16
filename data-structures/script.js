@@ -84,6 +84,12 @@ rest2.numGuests ??= 10;
 console.log(rest1.numGuests); // 0
 console.log(rest2.numGuests); // 10
 // görüldüğü gibi nullish assigment operator ile 0'ı truthy value olarak gösterebiliyorum.
+
+rest1.owner &&= 'Anonymous';
+console.log(rest1); // {name: 'Fern', numGuests: 0}
+rest2.owner &&= 'Anonymous';
+console.log(rest2); // {name: 'Sky Burger', owner: 'Anonymous', numGuests: 10}
+
 /*
 ///////////////////////////////////////
 // The Nullish Coalescing Operator (??)
