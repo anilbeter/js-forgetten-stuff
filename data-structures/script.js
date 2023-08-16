@@ -73,10 +73,17 @@ const rest2 = {
 // console.log(rest2.numGuests); --> 10
 
 // OR assigment operator
-rest1.numGuests ||= 10;
-rest2.numGuests ||= 10;
+// rest1.numGuests ||= 10;
+// rest2.numGuests ||= 10;
 console.log(rest1.numGuests); // 10
 // 0 ayarlamama rağmen 10 gösteriyor, çünkü JS'e göre 0 falsy value. Bundan nasıl kaçınabilirim?
+
+// nullish assigment operator
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
+console.log(rest1.numGuests); // 0
+console.log(rest2.numGuests); // 10
+// görüldüğü gibi nullish assigment operator ile 0'ı truthy value olarak gösterebiliyorum.
 /*
 ///////////////////////////////////////
 // The Nullish Coalescing Operator (??)
