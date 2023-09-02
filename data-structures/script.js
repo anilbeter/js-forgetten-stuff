@@ -93,7 +93,29 @@ const game = {
     team2: 6.5,
   },
 };
+// For of loops
 
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) {
+  console.log(item);
+}
+
+for (const item of menu.entries()) {
+  console.log(item);
+  // (2) [0, 'Focaccia']
+  // (2) [1, 'Bruschetta']
+  // ...
+}
+
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+  // 1: Focaccia
+  // 2: Bruschetta
+  // ...
+}
+
+/*
 // 1)
 const players1 = [...game.players[0]];
 const players2 = [...game.players[1]];
@@ -137,7 +159,7 @@ printGoals('Anil', 'Cody', 'Billie', 'Bluey');
 // 7)
 team1 < team2 && console.log('Team 1 is more likely to win');
 team1 > team2 && console.log('Team 2 is more likely to win');
-/*
+
 ///////////////////////////////
 // Logical Assignment Operators
 
