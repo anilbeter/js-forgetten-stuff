@@ -55,6 +55,37 @@ const restaurant = {
 };
 // Looping Objects: Object Keys, Values and Entries
 
+// Property NAMES
+const properties = Object.keys(openingHours);
+console.log(properties);
+// (3) ['thu', 'fri', 'sat']
+
+let openStr = `We are open on ${properties.length} days: `;
+// We are open on 3 days
+
+for (const day of properties) {
+  openStr += `${day}, `;
+}
+console.log(openStr);
+// We are open on 3 days: thu, fri, sat,
+
+// Property VALUES
+const values = Object.values(openingHours);
+console.log(values);
+// (3) [{…}, {…}, {…}]
+
+// Entire object (entries)
+const entries = Object.entries(openingHours);
+// console.log(entries);
+// (3) [Array(2), Array(2), Array(2)]
+
+for (const [day, { open, close }] of entries) {
+  console.log(`${day}: open time is: ${open} and close time is: ${close}`);
+}
+// thu: open time is: 12 and close time is: 22
+// fri: open time is: 11 and close time is: 23
+// sat: open time is: 0 and close time is: 24
+
 /*
 // console.log(restaurant.openingHours.mon.open);
 // restaurant.openingHours.mon = undefined. because there are only thu, fri, and sat. so i try to access open of undefined -> undefined.open
