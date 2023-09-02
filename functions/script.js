@@ -24,7 +24,7 @@ createBooking('LH123', 5);
 
 // numPassengers olarak 2 yi alacak, default olarak 2 ayarlamıştım.
 createBooking('LH123', undefined, 1000);
-*/
+
 
 const flight = 'LH234';
 const anil = {
@@ -55,3 +55,4 @@ const newPassport = function (person) {
 
 newPassport(anil);
 checkIn(flight, anil);
+*/
