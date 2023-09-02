@@ -53,7 +53,9 @@ const restaurant = {
     console.log(optionalIngredients);
   },
 };
+// Looping Objects: Object Keys, Values and Entries
 
+/*
 // console.log(restaurant.openingHours.mon.open);
 // restaurant.openingHours.mon = undefined. because there are only thu, fri, and sat. so i try to access open of undefined -> undefined.open
 // script.js:97 Uncaught TypeError: Cannot read properties of undefined (reading 'open')
@@ -89,7 +91,7 @@ const users = [
 console.log(users[0]?.name ?? 'User array empty.');
 // Anil
 
-/*
+
 // For of loops
 
 const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
