@@ -53,46 +53,43 @@ const restaurant = {
     console.log(optionalIngredients);
   },
 };
-const game = {
-  team1: 'Bayern Munich',
-  team2: 'Borrussia Dortmund',
-  players: [
-    [
-      'Neuer',
-      'Pavard',
-      'Martinez',
-      'Alaba',
-      'Davies',
-      'Kimmich',
-      'Goretzka',
-      'Coman',
-      'Muller',
-      'Gnarby',
-      'Lewandowski',
-    ],
-    [
-      'Burki',
-      'Schulz',
-      'Hummels',
-      'Akanji',
-      'Hakimi',
-      'Weigl',
-      'Witsel',
-      'Hazard',
-      'Brandt',
-      'Sancho',
-      'Gotze',
-    ],
-  ],
-  score: '4:0',
-  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-  date: 'Nov 9th, 2037',
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
+
+// console.log(restaurant.openingHours.mon.open);
+// restaurant.openingHours.mon = undefined. because there are only thu, fri, and sat. so i try to access open of undefined -> undefined.open
+// script.js:97 Uncaught TypeError: Cannot read properties of undefined (reading 'open')
+
+// Optional Chaning (?.)
+// To prevent this error, I can use Optional Chaining. Long story short it whether is there restaurant.openingHours.mon controls it first.
+console.log(restaurant.openingHours.mon?.open);
+// undefined
+
+// I can use multiple optional chaining
+console.log(restaurant.openingHours?.mon?.open);
+// undefined
+
+// Example
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+for (const day of days) {
+  const open = restaurant.openingHours[day]?.open ?? 'closed';
+  console.log(`On ${day}, we open at ${open}`);
+}
+
+// Methods
+console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
+console.log(restaurant.orderDoner?.(0, 1) ?? 'Method does not exist');
+// Method does not exist
+
+// Arrays
+const users = [
+  {
+    name: 'Anil',
+    email: 'hello@anil.io',
   },
-};
+];
+console.log(users[0]?.name ?? 'User array empty.');
+// Anil
+
+/*
 // For of loops
 
 const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
@@ -115,7 +112,7 @@ for (const [i, el] of menu.entries()) {
   // ...
 }
 
-/*
+
 // 1)
 const players1 = [...game.players[0]];
 const players2 = [...game.players[1]];
