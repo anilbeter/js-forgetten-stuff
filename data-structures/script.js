@@ -53,6 +53,62 @@ const restaurant = {
     console.log(optionalIngredients);
   },
 };
+// Sets
+const ordersSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+]);
+console.log(ordersSet);
+// Set(3) {'Pasta', 'Pizza', 'Risotto'}
+
+console.log(new Set('Anil'));
+// Set(4) {'A', 'n', 'i', 'l'}
+
+console.log(ordersSet.size);
+// 3
+
+console.log(ordersSet.has('Pizza')); // true
+console.log(ordersSet.has('Bread')); // false
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread');
+console.log(ordersSet);
+// Set(4) {'Pasta', 'Pizza', 'Risotto', 'Garlic Bread'}
+ordersSet.delete('Risotto');
+console.log(ordersSet);
+// Set(3) {'Pasta', 'Pizza', 'Garlic Bread'}
+
+console.log(ordersSet[2]);
+// undefined
+// Arraydaki gibi setlerde index yok! Değerleri dışarı çıkarmanın hiçbi yolu yok, çünkü gerekte yok. Zaten her element unique, orderın bi önemi de yok.
+
+// ordersSet.clear();
+// console.log(ordersSet);
+// Set(0) {size: 0}
+
+for (const order of ordersSet) {
+  console.log(order);
+  // Pasta
+  // Pizza
+  // Garlic Bread
+}
+
+// Example
+const stuff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+// const staffUnique = new Set(stuff);
+// console.log(staffUnique);
+// Set(3) {'Waiter', 'Chef', 'Manager'}
+// Şimdi bu oluşturduğum seti arraye dönüştürmek istiyorum:
+const staffUnique = [...new Set(stuff)];
+console.log(staffUnique);
+// (3) ['Waiter', 'Chef', 'Manager']
+
+/*
+///////////////////////////////////////
+// Challenge #2
 const game = {
   team1: 'Bayern Munich',
   team2: 'Borrussia Dortmund',
@@ -116,7 +172,7 @@ for (const [team, odd] of Object.entries(game.odds)) {
   console.log(`Odd of ${teamStr} ${odd}`);
 }
 
-/*
+
 // Challenge #2
 Let's continue with our football betting app! Keep using the 'game' variable from before.
 Your tasks:
