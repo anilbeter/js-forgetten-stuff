@@ -53,6 +53,58 @@ const restaurant = {
     console.log(optionalIngredients);
   },
 };
+// Maps Fundamentals
+
+// Long story short -> Maps just like objects, but indeed there's one huge difference between them. You can set keys only string in OBJECTS, againts this you can set any type keys in MAPS. Like number, arrays, even you can use a map for a key!
+const rest = new Map();
+rest.set('name', "Cody's Burger");
+rest.set(1, 'Los Angeles, California');
+rest.set(2, 'New York City, New York');
+console.log(rest);
+// Map(3) {'name' => "Cody's Burger", 1 => 'Los Angeles, California', 2 => 'New York City, New York'}
+
+// Chaining
+rest
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23);
+console.log(rest);
+// Map(6) {'name' => "Cody's Burger", 1 => 'Los Angeles, California', 2 => 'New York City, New York', 'categories' => Array(4), 'open' => 11, …}
+
+// Even you can set a boolean as key:
+const boolMap = new Map();
+boolMap.set(true, 'Anil should have known.');
+console.log(boolMap);
+// Map(1) {true => 'Anil should have known.'}
+
+rest.set(true, 'We are open :)').set(false, 'We are closed :(');
+
+console.log(rest.get('name')); // Cody's Burger
+console.log(rest.get('open')); // 11
+
+const time = 21;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+// We are open :)
+
+console.log(rest.has('categories')); // true
+rest.delete(2);
+console.log(rest);
+// Map(7) {'name' => "Cody's Burger", 1 => 'Los Angeles, California', 'categories' => Array(4), 'open' => 11, 'close' => 23, …}
+console.log(rest.size);
+// 7
+// rest.clear(); --> clear whole map
+
+const arr = [1, 2];
+rest.set(arr, 'Test');
+console.log(rest.get(arr));
+// Test
+
+// I can DOM as a key:
+rest.set(document.querySelector('h1'), 'Heading');
+console.log(rest);
+// {h1 => "Heading"}
+
+/*
 // Sets
 const ordersSet = new Set([
   'Pasta',
@@ -106,7 +158,7 @@ const staffUnique = [...new Set(stuff)];
 console.log(staffUnique);
 // (3) ['Waiter', 'Chef', 'Manager']
 
-/*
+
 ///////////////////////////////////////
 // Challenge #2
 const game = {
