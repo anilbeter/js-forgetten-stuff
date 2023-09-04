@@ -53,6 +53,41 @@ const restaurant = {
     console.log(optionalIngredients);
   },
 };
+// Maps: Iteration
+
+const question = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'C++'],
+  [4, 'JavaScript'],
+  ['correct', 4],
+  [true, 'Correct👋🏻'],
+  [false, 'Try again!'],
+]);
+console.log(question);
+
+// Convert object to map
+console.log(Object.entries(openingHours));
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap);
+// Map(3) {'thu' => {…}, 'fri' => {…}, 'sat' => {…}}
+
+// Quiz app
+console.log(question.get('question'));
+for (const [key, value] of question) {
+  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+}
+// const answer = Number(prompt('You answer: '));
+// console.log(answer);
+
+// console.log(question.get(question.get('correct') === answer));
+
+// Convert map to array
+console.log([...question]);
+// (8) [Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2)]
+
+/*
 // Maps Fundamentals
 
 // Long story short -> Maps just like objects, but indeed there's one huge difference between them. You can set keys only string in OBJECTS, againts this you can set any type keys in MAPS. Like number, arrays, even you can use a map for a key!
@@ -104,7 +139,7 @@ rest.set(document.querySelector('h1'), 'Heading');
 console.log(rest);
 // {h1 => "Heading"}
 
-/*
+
 // Sets
 const ordersSet = new Set([
   'Pasta',
