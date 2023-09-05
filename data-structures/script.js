@@ -54,6 +54,81 @@ const restaurant = {
   },
 };
 
+// Working with Strings: Part 2
+const airline = 'TAP Air Portugal';
+console.log(airline.toLowerCase());
+// tap air portugal
+console.log(airline.toUpperCase());
+// TAP AIR PORTUGAL
+
+// Fix capitalization in name
+const passenger = 'aNiL'; // it should look like "Anil"
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+// Anil
+
+// Comparing email example
+const email = 'hello@jonas.io';
+const loginEmail = '  heLLo@jonaS.Io \n';
+
+const lowerEmail = loginEmail.toLowerCase();
+
+// Get rid all the whitespaces; use trim
+const trimmedEmail = lowerEmail.trim();
+console.log(trimmedEmail);
+// hello@jonas.io
+
+// Same thing in one line:
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+
+// Replacing
+const priceGB = '288,96£';
+const priceUS = priceGB.replace(',', '.').replace('£', '$');
+console.log(priceUS);
+// 288.96$
+
+// replaceAll
+const announcement =
+  'All passengers come to boarding door 23. Boarding door 23!';
+console.log(announcement.replaceAll('door', 'gate'));
+
+// Booleans
+const plane = 'A320neo';
+console.log(plane.includes('A320'));
+// true
+console.log(plane.includes('L.A.FLY'));
+// false
+console.log(plane.startsWith('Air'));
+// false
+console.log(plane.startsWith('A32'));
+// true
+
+if (plane.startsWith('A320') && plane.endsWith('neo')) {
+  console.log('Part of the new airbus family');
+  // Part of the new airbus family
+}
+
+// Practice Example
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+  if (baggage.includes('knife') || baggage.includes('gun')) {
+    console.log('You are not allowed on board');
+  } else {
+    console.log('Welcome aboard :)');
+  }
+};
+
+checkBaggage('I have a laptop, some Food and a pocket Knife');
+// You are not allowed on board
+checkBaggage('Socks and camera');
+// Welcome aboard :)
+checkBaggage('Got some snacks and a gun for protection');
+// You are not allowed on board
+
+/*
 // Working with Strings: Part 1
 
 const airline = 'TAP Air Portugal';
@@ -106,7 +181,7 @@ checkMiddleSeat('23C');
 checkMiddleSeat('3E');
 // Your seat is in the middle!
 
-/*
+
 // Challenge #3
 const gameEvents = new Map([
   [17, '⚽ GOAL'],
