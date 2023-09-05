@@ -54,6 +54,59 @@ const restaurant = {
   },
 };
 
+// Working with Strings: Part 1
+
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+console.log(plane[0]);
+// A
+console.log(airline.length);
+// 16
+
+console.log(airline.indexOf('r'));
+// 6
+console.log(airline.lastIndexOf('r'));
+// 10 (sonuncu r yi veriyor)
+console.log(airline.indexOf('Portugal'));
+// 8
+
+// Slice method
+console.log(airline.slice(4));
+// Air Portugal
+console.log(airline.slice(4, 9));
+// Air P
+// Görüldüğü gibi 4 dahil, 9 dahil değil
+
+// Write first word without hard code
+console.log(airline.slice(0, airline.indexOf(' ')));
+// TAP
+
+// Write last word withour hard code
+console.log(airline.slice(airline.lastIndexOf(' ') + 1));
+// Portugal
+
+console.log(airline.slice(-8));
+// Portugal
+
+// Example
+const checkMiddleSeat = function (seat) {
+  // B and E are middle seats
+  console.log(
+    `${
+      seat.slice(-1) === 'B' || seat.slice(-1) === 'E'
+        ? 'Your seat is in the middle!'
+        : 'Your seat not in the middle.'
+    }`
+  );
+};
+checkMiddleSeat('11B');
+// Your seat is in the middle!
+checkMiddleSeat('23C');
+// Your seat not in the middle.
+checkMiddleSeat('3E');
+// Your seat is in the middle!
+
+/*
 // Challenge #3
 const gameEvents = new Map([
   [17, '⚽ GOAL'],
@@ -90,7 +143,7 @@ for (const [key, value] of gameEvents) {
   );
 }
 
-/*
+
 Coding Challenge #3
 Let's continue with our football betting app! This time, we have a map called 'gameEvents' (see below) with a log of the events that happened during the game. The values are the events themselves, and the keys are the minutes in which
 each event happened (a football game has 90 minutes plus some extra time).
