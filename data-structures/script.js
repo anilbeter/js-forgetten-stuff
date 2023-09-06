@@ -53,7 +53,82 @@ const restaurant = {
     console.log(optionalIngredients);
   },
 };
+// Working with Strings: Part 3
 
+// Split method
+console.log('a+very+nice+string'.split('+'));
+// (4) ['a', 'very', 'nice', 'string']
+
+console.log('Anil Beter'.split(' '));
+// (2) ['Anil', 'Beter']
+
+const [firstName, lastName] = 'Anil Beter'.split(' ');
+console.log(firstName);
+// Anil
+console.log(lastName);
+// Beter
+
+// Join
+const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+console.log(newName);
+// Mr. Anil BETER
+// Join, split'in tam tersi. arrayi benim belirledigim karakteri aralarına koyarak birleştiriyor
+
+// Practice
+const capitelizeName = function (name) {
+  const capitalizedFullName = [];
+  const loweredName = name.toLowerCase();
+  const seperatedName = loweredName.split(' ');
+  for (const name of seperatedName) {
+    capitalizedFullName.push(name[0].toUpperCase() + name.slice(1));
+  }
+  console.log(capitalizedFullName.join(' '));
+};
+
+// Solution 2
+const capitalizeName2 = function (name) {
+  const loweredName = name.toLowerCase();
+  const seperatedName = loweredName.split(' ');
+  const fullNamesCapitalize = [];
+  for (const n of seperatedName) {
+    fullNamesCapitalize.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  console.log(fullNamesCapitalize.join(' '));
+};
+
+const passenger = 'jessice ann smith davis';
+capitelizeName(passenger);
+// Jessice Ann Smith Davis
+const anil = 'aniL beTeR';
+capitalizeName2(anil);
+// Anil Beter
+
+// Padding
+const message = 'Go to gate 23!';
+console.log(message.padStart(25, '+'));
+// +++++++++++Go to gate 23!
+console.log(message.padStart(25, '+').length);
+// 25
+console.log(message.padStart(25, '+').padEnd(30, '+'));
+// +++++++++++Go to gate 23!+++++
+
+// Real world example of padding
+const maskCreditCard = function (number) {
+  const str = number + ''; // numberı string e dönüştürdüm
+  const last = str.slice(-4);
+  return last.padStart(str.length, '*');
+};
+
+console.log(maskCreditCard(234923534354));
+// ********4354
+console.log(maskCreditCard('90283209482094809423823095890482'));
+// ****************************0482
+
+// Repeat
+console.log('ha'.repeat(10));
+// hahahahahahahahahaha
+
+/*
 // Working with Strings: Part 2
 const airline = 'TAP Air Portugal';
 console.log(airline.toLowerCase());
@@ -128,7 +203,7 @@ checkBaggage('Socks and camera');
 checkBaggage('Got some snacks and a gun for protection');
 // You are not allowed on board
 
-/*
+
 // Working with Strings: Part 1
 
 const airline = 'TAP Air Portugal';
