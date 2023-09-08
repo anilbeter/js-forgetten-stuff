@@ -39,9 +39,11 @@ btnEl.addEventListener('click', function () {
   }
   let i = 1;
   let maxSizeOfString = 0;
+  for (const max of camelCaseStaff) {
+    if (max.length > maxSizeOfString) maxSizeOfString = max.length;
+  }
   for (const n of camelCaseStaff) {
-    if (n.length > maxSizeOfString) maxSizeOfString = n.length;
-    console.log(`${n.padEnd(17, ' ')} ${'✅'.repeat(i)}`);
+    console.log(`${n.padEnd(maxSizeOfString, ' ')} ${'✅'.repeat(i)}`);
     i++;
   }
 });
