@@ -21,6 +21,56 @@ const openingHours = {
   },
 };
 
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+const btnEl = document.querySelector('button');
+btnEl.addEventListener('click', function () {
+  const input = document.querySelector('textarea').value;
+  const loweredInput = input.toLowerCase();
+  const oneLineWrap = loweredInput.split('\n');
+  const emptyArr = [];
+  for (const n of oneLineWrap) {
+    emptyArr.push(n.split('_'));
+  }
+  const camelCaseStaff = [];
+  for (const [first, second] of emptyArr) {
+    camelCaseStaff.push(first + second[0].toUpperCase() + second.slice(1));
+  }
+  let i = 1;
+  let maxSizeOfString = 0;
+  for (const n of camelCaseStaff) {
+    if (n.length > maxSizeOfString) maxSizeOfString = n.length;
+    console.log(`${n.padEnd(17, ' ')} ${'✅'.repeat(i)}`);
+    i++;
+  }
+});
+
+/*
+// CHALLENGE #4
+Write a program that receives a list of variable names written in underscore_case and convert them to camelCase.
+The input will come from a textarea inserted into the DOM (see code below to insert the elements), and conversion will happen when the button is pressed. Test data (pasted to textarea, including spaces):
+underscore_case
+first_name
+Some_Variable
+calculate_AGE
+delayed_departure
+Should produce this output (5 separate console.log outputs):
+underscoreCase   ✅
+firstName        ✅✅
+someVariable     ✅✅✅
+calculateAge     ✅✅✅✅
+delayedDeparture ✅✅✅✅✅
+Hints:
+§ Remember which character defines a new line in the textarea 😉
+§ The solution only needs to work for a variable made out of 2 words, like a_b
+§ Start without worrying about the ✅. Tackle that only after you have the variable
+name conversion working 😉
+§ This challenge is difficult on purpose, so start watching the solution in case
+you're stuck. Then pause and continue!
+Afterwards, test with your own test data!
+GOOD LUCK 😀
+
 // Data needed for first part of the section
 const restaurant = {
   name: 'Classico Italiano',
@@ -128,7 +178,7 @@ console.log(maskCreditCard('90283209482094809423823095890482'));
 console.log('ha'.repeat(10));
 // hahahahahahahahahaha
 
-/*
+
 // Working with Strings: Part 2
 const airline = 'TAP Air Portugal';
 console.log(airline.toLowerCase());
