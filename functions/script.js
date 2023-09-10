@@ -90,7 +90,7 @@ const high5 = function () {
   console.log(`👋🏻`);
 };
 document.body.addEventListener('click', high5);
-*/
+
 
 // Functions Returning Functions
 
@@ -110,3 +110,88 @@ greet('Hello')('Anil'); // Hello Anil
 const greetArrow = greeting => name => console.log(`${greeting} ${name}`);
 
 greetArrow('Hellooo')('Chris'); // Hellooo Chris
+*/
+
+// the Call and Apply methods
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+    );
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+  },
+};
+
+lufthansa.book(23, 'Anil Beter');
+lufthansa.book(645, 'Cody Fern');
+console.log(lufthansa);
+// ...
+// bookings: Array(2)
+// 0: {flight: 'LH23', name: 'Anil Beter'}
+// 1: {flight: 'LH645', name: 'Cody Fern'}
+// ...
+
+const eurowings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+};
+
+const book = lufthansa.book;
+
+// ERROR
+// book(23, 'Sarah Winter');
+// ERROR
+
+// Proper way -> the Call method
+// what object that this keyword should point?, flightNum, name
+book.call(eurowings, 23, 'Sarah Winter');
+console.log(eurowings);
+// bookings: Array(1)
+// 0: {flight: 'EW23', name: 'Sarah Winter'}
+// ...
+
+book.call(lufthansa, 239, 'Mary Cooper');
+console.log(lufthansa);
+// ...
+// bookings: Array(3)
+// 0: {flight: 'LH23', name: 'Anil Beter'}
+// 1: {flight: 'LH645', name: 'Cody Fern'}
+// 2: {flight: 'LH239', name: 'Mary Cooper'}
+// ...
+
+const swiss = {
+  airline: 'Swiss Air Lines',
+  iataCode: 'LX',
+  bookings: [],
+};
+
+book.call(swiss, 184, 'Martha Ocean');
+console.log(swiss);
+// bookings: Array(1)
+// 0: {flight: 'LX184', name: 'Martha Ocean'}
+
+// Apply method
+// Too similar to call method, but instead apply method takes *array* as argument
+const flightData = [583, 'George Washington'];
+book.apply(swiss, flightData);
+console.log(swiss);
+// ...
+// bookings: Array(2)
+// 0: {flight: 'LX184', name: 'Martha Ocean'}
+// 1: {flight: 'LX583', name: 'George Washington'}
+// ...
+
+// Apply method isn't that used anymore, cause we have much modern way (spread operator):
+const anilData = [23, 'Anil Adrian'];
+book.call(swiss, ...anilData);
+console.log(swiss);
+// ...
+// bookings: Array(3)
+// 0: {flight: 'LX184', name: 'Martha Ocean'}
+// 1: {flight: 'LX583', name: 'George Washington'}
+// 2: {flight: 'LX23', name: 'Anil Adrian'}
+// ...
