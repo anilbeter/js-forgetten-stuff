@@ -55,7 +55,7 @@ const newPassport = function (person) {
 
 newPassport(anil);
 checkIn(flight, anil);
-*/
+
 
 // Functions Accepting Callback Functions (High-Order Function)
 const oneWord = function (str) {
@@ -90,3 +90,23 @@ const high5 = function () {
   console.log(`👋🏻`);
 };
 document.body.addEventListener('click', high5);
+*/
+
+// Functions Returning Functions
+
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+
+const greeterHey = greet('Hey');
+greeterHey('Anil'); // Hey Anil
+greeterHey('Billie'); // Hey Billie
+
+greet('Hello')('Anil'); // Hello Anil
+
+// Write greet function as arrow function
+const greetArrow = greeting => name => console.log(`${greeting} ${name}`);
+
+greetArrow('Hellooo')('Chris'); // Hellooo Chris
