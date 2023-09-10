@@ -195,3 +195,66 @@ console.log(swiss);
 // 1: {flight: 'LX583', name: 'George Washington'}
 // 2: {flight: 'LX23', name: 'Anil Adrian'}
 // ...
+
+// Bind method
+// -> Bind methods similar to call method, we can manually set this keyword to any object. Difference is: Bind method doesn't immediately call the function. Instead it returns a new function where this keyword is bound
+
+// book.call(eurowings, 23, 'Sarah Winter');
+
+const bookEW = book.bind(eurowings);
+bookEW(23, 'Steven Williams');
+console.log(eurowings);
+// ...
+// bookings: Array(2)
+// 0: {flight: 'EW23', name: 'Sarah Winter'}
+// 1: {flight: 'EW23', name: 'Steven Williams'}
+// ...
+
+const bookLH = book.bind(lufthansa);
+const bookLX = book.bind(swiss);
+
+// I can set default arguments
+const bookEW99 = book.bind(eurowings, 99);
+bookEW99('Anil Ocean');
+bookEW99('John LA');
+console.log(eurowings);
+// bookings: Array(4)
+// 0: {flight: 'EW23', name: 'Sarah Winter'}
+// 1: {flight: 'EW23', name: 'Steven Williams'}
+// 2: {flight: 'EW99', name: 'Anil Ocean'}
+// 3: {flight: 'EW99', name: 'John LA'}
+
+// With event Listeners
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  console.log(this);
+  // <button class="buy">Buy new plane 🛩</button>
+  // This keyword points button itself. I should fix it cuz I got NaN resault
+
+  this.planes++;
+  console.log(this.planes);
+};
+
+document
+  .querySelector('.buy')
+  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+// I used bind method to fix line 231 error. Now this keyword points to lutfhansa object
+
+// Partial application
+
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200)); // 220
+
+const addVATPortugal = addTax.bind(null, 0.23);
+// null stands for this keyword, I don't even need to set this keyword for target. So I use null instead
+console.log(addVATPortugal(100)); // 123
+// I create brand new function for Portugal Tax. Imagine the tax is 0.23 in Portugal ;)
+
+// Rewrite our partial application with technique that one function returning another function:
+const calculateTax = function (value) {
+  return function (rate) {
+    console.log(value + value * rate);
+  };
+};
+
+calculateTax(100)(0.23); // 123
