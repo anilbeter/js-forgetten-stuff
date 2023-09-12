@@ -169,8 +169,9 @@ const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
 console.log(currenciesUnique);
 // Set(3) {'USD', 'GBP', 'EUR'}
 
-currenciesUnique.forEach(function (value, key, map) {
-  console.log(`${key}: ${value}`);
+// _ means in parameter -> compeletly unnecessary
+currenciesUnique.forEach(function (value, _, map) {
+  console.log(`${value}: ${value}`);
 });
 // USD: USD
 // GBP: GBP
