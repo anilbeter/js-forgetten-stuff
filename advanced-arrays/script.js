@@ -74,3 +74,35 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+let arr = ['a', 'b', 'c', 'd', 'e'];
+
+// SLICE
+console.log(arr.slice(0, 2)); // (2) ['a', 'b']
+console.log(arr.slice(-1)); // ['e']
+
+// Create shallow copy of original array
+console.log(arr.slice()); // (5) ['a', 'b', 'c', 'd', 'e']
+
+// SPLICE (too similar to slice method, big difference is splice method mutates original array)
+console.log(arr.splice(2)); // (3) ['c', 'd', 'e']
+arr.splice(-1);
+console.log(arr); // (2) ['c', 'd']
+
+let anilFavs = ['blue', 'Ilayda', 'ocean', 23, 'L.A.'];
+// Start index 1, and delete 2 elements (index 1 includes)
+anilFavs.splice(1, 2);
+console.log(anilFavs); // (3) ['blue', 23, 'L.A.']
+
+// REVERSE (mutate original array)
+anilFavs = ['blue', 'Ilayda', 'ocean', 23, 'L.A.'];
+console.log(anilFavs.reverse()); // (5) ['L.A.', 23, 'ocean', 'Ilayda', 'blue']
+console.log(anilFavs); // (5) ['L.A.', 23, 'ocean', 'Ilayda', 'blue']
+
+// CONCAT
+const cities = ['L.A.', 'New York', 'Houston', 'San Frascisco'];
+const nums = [23, 26, 15];
+console.log(cities.concat(nums)); // (7) ['L.A.', 'New York', 'Houston', 'San Frascisco', 23, 26, 15]
+
+// JOIN
+console.log(cities.join(', ')); // L.A., New York, Houston, San Frascisco
