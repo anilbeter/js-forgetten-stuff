@@ -285,7 +285,7 @@ Use the 'displayResults' method to display the 2 arrays in the test data. Use bo
 Test data for bonus:
  Data 1: [5, 2, 3]
  Data 2: [1, 5, 3, 9, 6, 1]
-*/
+
 
 // This is important challenge. REVIEW LATER
 const poll = {
@@ -327,3 +327,31 @@ document
 // Bonus task
 poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
 // Poll results are 5, 2, 3
+*/
+
+const runOnce = function () {
+  console.log('This will never run again');
+};
+runOnce();
+
+// Immediately Invoked Function Expressions
+// This function just executes only once
+(function () {
+  console.log('This will never run again');
+  const isPrivate = 23;
+})();
+
+// console.log(isPrivate);
+// Uncaught ReferenceError: isPrivate is not defined
+
+// Immediately Invoked Function Expressions
+(() => console.log('This will never run again'))();
+
+{
+  const isPrivate = 23;
+  var notPrivate = 23;
+}
+// console.log(isPrivate);
+// Uncaught ReferenceError: isPrivate is not defined
+console.log(notPrivate);
+// 23
