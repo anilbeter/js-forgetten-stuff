@@ -74,6 +74,7 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+/*
 
 let arr = ['a', 'b', 'c', 'd', 'e'];
 
@@ -106,3 +107,19 @@ console.log(cities.concat(nums)); // (7) ['L.A.', 'New York', 'Houston', 'San F
 
 // JOIN
 console.log(cities.join(', ')); // L.A., New York, Houston, San Frascisco
+
+*/
+
+const arr = [23, 11, 64];
+console.log(arr[0]); // 23
+
+// with new at method
+console.log(arr.at(0)); // 23
+// even works with strings
+console.log('Anil'.at(0)); // A
+
+// Getting last array element
+console.log(arr[arr.length - 1]); // 64
+console.log(arr.slice(-1)); // [64]
+// much way better/newer way with at:
+console.log(arr.at(-1)); // 64
