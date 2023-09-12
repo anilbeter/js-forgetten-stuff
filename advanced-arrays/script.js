@@ -71,7 +71,7 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 /*
@@ -108,7 +108,7 @@ console.log(cities.concat(nums)); // (7) ['L.A.', 'New York', 'Houston', 'San F
 // JOIN
 console.log(cities.join(', ')); // L.A., New York, Houston, San Frascisco
 
-*/
+// At method
 
 const arr = [23, 11, 64];
 console.log(arr[0]); // 23
@@ -123,3 +123,26 @@ console.log(arr[arr.length - 1]); // 64
 console.log(arr.slice(-1)); // [64]
 // much way better/newer way with at:
 console.log(arr.at(-1)); // 64
+
+*/
+// Looping Arrays: forEach method
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// for of loop
+for (const movement of movements) {
+  if (movement > 0) {
+    console.log(`You deposited ${movement}`);
+  } else {
+    console.log(`You withdrew ${Math.abs(movement)}`);
+  }
+}
+
+// with ForEach method [Easier Way]
+movements.forEach(function (movement) {
+  if (movement > 0) {
+    console.log(`You deposited ${movement}`);
+  } else {
+    console.log(`You withdrew ${Math.abs(movement)}`);
+  }
+});
