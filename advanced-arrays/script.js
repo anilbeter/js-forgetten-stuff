@@ -143,10 +143,13 @@ for (const [i, movement] of movements.entries()) {
 
 // function (movement-current element-, index, array)
 // Order is TOO IMPORTANT!
-movements.forEach(function (movement, index, array) {
+movements.forEach(function (movement, i, array) {
   if (movement > 0) {
-    console.log(`Movement ${index + 1}: You deposited ${movement}`);
+    console.log(`Movement ${i + 1}: You deposited ${movement}`);
   } else {
-    console.log(`Movement ${index + 1}: You withdrew ${Math.abs(movement)}`);
+    console.log(`Movement ${i + 1}: You withdrew ${Math.abs(movement)}`);
   }
 });
+// Movement 1: You deposited 200
+// Movement 2: You deposited 450
+// ...
