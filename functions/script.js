@@ -327,7 +327,7 @@ document
 // Bonus task
 poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
 // Poll results are 5, 2, 3
-*/
+
 
 const runOnce = function () {
   console.log('This will never run again');
@@ -355,3 +355,21 @@ runOnce();
 // Uncaught ReferenceError: isPrivate is not defined
 console.log(notPrivate);
 // 23
+*/
+
+// Closures
+
+const secureBooking = function () {
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  };
+};
+
+const booker = secureBooking();
+
+booker(); // 1 passengers
+booker(); // 2 passengers
+booker(); // 3 passengers
