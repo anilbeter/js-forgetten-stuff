@@ -61,6 +61,8 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -121,7 +123,7 @@ console.log(arr.at(-1)); // 64
 
 // Looping Arrays: forEach method
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
 
 // for of loop
 for (const [i, movement] of movements.entries()) {
@@ -148,7 +150,7 @@ movements.forEach(function (movement, i, array) {
 // Movement 2: You deposited 450
 // ...
 
-*/
+
 
 // Map
 const currencies = new Map([
@@ -176,3 +178,4 @@ currenciesUnique.forEach(function (value, _, map) {
 // USD: USD
 // GBP: GBP
 // EUR: EUR
+*/
