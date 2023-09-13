@@ -64,6 +64,9 @@ const inputClosePin = document.querySelector('.form__input--pin');
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 const displayMovements = function (movements) {
+  // containerMovements is not empty atm. It has 2 movements__row from index.html but those are just template or place holder elements. I need to rid out those elements. So first, I need to clear my container before insert html elements w/ insertAdjacentHTML from our so-called data(hehe).
+  containerMovements.innerHTML = '';
+
   movements.forEach(function (mov, i) {
     // IMPORTANT create html
     const type = mov > 0 ? 'deposit' : 'withdrawal';
