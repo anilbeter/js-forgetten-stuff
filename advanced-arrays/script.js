@@ -66,12 +66,15 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const displayMovements = function (movements) {
   movements.forEach(function (mov, i) {
     // IMPORTANT create html
-    const html = `
-      <div class="movements__row">
-          <div class="movements__type movements__type--deposit">2 deposit</div>
-          <div class="movements__value">4 000€</div>
-      </div>
-    `;
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
+    const html = ` 
+    <div class="movements__row">
+        <div class="movements__type movements__type--${type}">${
+      i + 1
+    } ${type.toUpperCase()}</div>
+        <div class="movements__value">${mov}</div>
+    </div>
+      `;
   });
 };
 displayMovements(account1.movements);
