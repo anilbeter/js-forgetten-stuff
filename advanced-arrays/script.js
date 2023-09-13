@@ -75,6 +75,12 @@ const displayMovements = function (movements) {
         <div class="movements__value">${mov}</div>
     </div>
       `;
+
+    // <div class="movements">
+    //  <div class="movements__row">
+    //  ---> movements (containerMovements) parent, I'd want to store my movement__row's inside of containerMovements
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+    // WHY afterbegin -> Just inside the element, before its first child. So order/sorting will be like newest movement to oldest movement
   });
 };
 displayMovements(account1.movements);
