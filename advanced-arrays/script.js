@@ -223,7 +223,7 @@ TEST DATA 1: Julia's data [3, 5, 2, 12, 7], Kate's data [4, 1, 15, 8, 3]
 TEST DATA 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
 
 GOOD LUCK 😀
-*/
+
 const dogsJulia = [3, 5, 2, 12, 7];
 const dogsKate = [4, 1, 15, 8, 3];
 
@@ -240,3 +240,35 @@ const checkDogs = function (julia, kate) {
   });
 };
 checkDogs(dogsJulia, dogsKate);
+*/
+
+// Map method
+const movementsArr = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const eurToUsd = 1.1;
+const convertedMovs = movementsArr.map(function (mov) {
+  return Math.trunc(mov * eurToUsd);
+});
+console.log(convertedMovs);
+// (8) [220, 495, -440, 3300, -715, -143, 77, 1430]
+
+// with for of loop
+const forArr = [];
+for (const mov of movementsArr) {
+  forArr.push(Math.trunc(mov * eurToUsd));
+}
+console.log(forArr);
+// (8) [220, 495, -440, 3300, -715, -143, 77, 1430]
+
+// Map method with arrow function
+const movsUSD = movementsArr.map(mov => Math.trunc(mov * eurToUsd));
+console.log(movsUSD);
+// (8) [220, 495, -440, 3300, -715, -143, 77, 1430]
+
+const movementsDescriptions = movementsArr.map(
+  (mov, i) =>
+    `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
+      mov
+    )}`
+);
+console.log(movementsDescriptions);
+// (8) ['Movement 1: You deposited 200', 'Movement 2: You deposited 450', 'Movement 3: You withdrew 400', 'Movement 4: You deposited 3000', 'Movement 5: You withdrew 650', 'Movement 6: You withdrew 130', 'Movement 7: You deposited 70', 'Movement 8: You deposited 1300']
