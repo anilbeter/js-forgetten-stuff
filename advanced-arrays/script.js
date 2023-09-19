@@ -88,6 +88,17 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+createUsernames(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -203,7 +214,7 @@ currenciesUnique.forEach(function (value, _, map) {
 // USD: USD
 // GBP: GBP
 // EUR: EUR
-*/
+
 
 // Coding Challenge #1
 
@@ -240,7 +251,7 @@ const checkDogs = function (julia, kate) {
   });
 };
 checkDogs(dogsJulia, dogsKate);
-*/
+
 
 // Map method
 const movementsArr = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -272,3 +283,4 @@ const movementsDescriptions = movementsArr.map(
 );
 console.log(movementsDescriptions);
 // (8) ['Movement 1: You deposited 200', 'Movement 2: You deposited 450', 'Movement 3: You withdrew 400', 'Movement 4: You deposited 3000', 'Movement 5: You withdrew 650', 'Movement 6: You withdrew 130', 'Movement 7: You deposited 70', 'Movement 8: You deposited 1300']
+*/
