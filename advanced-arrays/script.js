@@ -284,3 +284,15 @@ const movementsDescriptions = movementsArr.map(
 console.log(movementsDescriptions);
 // (8) ['Movement 1: You deposited 200', 'Movement 2: You deposited 450', 'Movement 3: You withdrew 400', 'Movement 4: You deposited 3000', 'Movement 5: You withdrew 650', 'Movement 6: You withdrew 130', 'Movement 7: You deposited 70', 'Movement 8: You deposited 1300']
 */
+
+const movementsArray = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const deposits = movementsArray.filter(function (mov) {
+  return mov > 0;
+});
+console.log(deposits);
+// (5) [200, 450, 3000, 70, 1300]
+
+const withdrawals = movementsArray.filter(mov => mov < 0);
+console.log(withdrawals);
+// (3) [-400, -650, -130]
