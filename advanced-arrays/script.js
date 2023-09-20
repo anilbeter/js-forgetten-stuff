@@ -283,7 +283,7 @@ const movementsDescriptions = movementsArr.map(
 );
 console.log(movementsDescriptions);
 // (8) ['Movement 1: You deposited 200', 'Movement 2: You deposited 450', 'Movement 3: You withdrew 400', 'Movement 4: You deposited 3000', 'Movement 5: You withdrew 650', 'Movement 6: You withdrew 130', 'Movement 7: You deposited 70', 'Movement 8: You deposited 1300']
-*/
+
 
 const movementsArray = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -296,3 +296,31 @@ console.log(deposits);
 const withdrawals = movementsArray.filter(mov => mov < 0);
 console.log(withdrawals);
 // (3) [-400, -650, -130]
+*/
+
+console.log(movements);
+// (8) [200, 450, -400, 3000, -650, -130, 70, 1300]
+
+// accumulator -> SNOWBALL
+const balance = movements.reduce(function (accumulator, current, i, arr) {
+  console.log(`Iteration ${i}: Accumulator: ${accumulator}`);
+  return accumulator + current;
+}, 0);
+console.log(balance);
+// Iteration 0: Accumulator: 0
+// Iteration 1: Accumulator: 200
+// Iteration 2: Accumulator: 650
+// Iteration 3: Accumulator: 250
+// Iteration 4: Accumulator: 3250
+// Iteration 5: Accumulator: 2600
+// Iteration 6: Accumulator: 2470
+// Iteration 7: Accumulator: 2540
+// 3840
+
+// Same stuff with for of
+let total = 0;
+for (const mov of movements) {
+  total += mov;
+}
+console.log(total);
+// 3840
