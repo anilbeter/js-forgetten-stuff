@@ -304,21 +304,23 @@ console.log(withdrawals);
 
 console.log(movements);
 // (8) [200, 450, -400, 3000, -650, -130, 70, 1300]
-
+*/
 // accumulator -> SNOWBALL
 const balance = movements.reduce(function (accumulator, current, i, arr) {
-  console.log(`Iteration ${i}: Accumulator: ${accumulator}`);
+  console.log(
+    `Iteration ${i}: Accumulator: ${accumulator} Current: ${current}`
+  );
   return accumulator + current;
 }, 0);
 console.log(balance);
-// Iteration 0: Accumulator: 0
-// Iteration 1: Accumulator: 200
-// Iteration 2: Accumulator: 650
-// Iteration 3: Accumulator: 250
-// Iteration 4: Accumulator: 3250
-// Iteration 5: Accumulator: 2600
-// Iteration 6: Accumulator: 2470
-// Iteration 7: Accumulator: 2540
+// Iteration 0: Accumulator: 0 Current: 200
+// Iteration 1: Accumulator: 200 Current: 450
+// Iteration 2: Accumulator: 650 Current: -400
+// Iteration 3: Accumulator: 250 Current: 3000
+// Iteration 4: Accumulator: 3250 Current: -650
+// Iteration 5: Accumulator: 2600 Current: -130
+// Iteration 6: Accumulator: 2470 Current: 70
+// Iteration 7: Accumulator: 2540 Current: 1300
 // 3840
 
 // Same stuff with for of
@@ -328,4 +330,11 @@ for (const mov of movements) {
 }
 console.log(total);
 // 3840
-*/
+
+// Maximum value
+const max = movements.reduce((acc, mov) => {
+  if (acc > mov) return acc;
+  else return mov;
+}, movements[0]);
+console.log(max);
+// 3000
