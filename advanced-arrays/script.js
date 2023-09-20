@@ -61,8 +61,6 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
 const displayMovements = function (movements) {
   // containerMovements is not empty atm. It has 2 movements__row from index.html but those are just template or place holder elements. I need to rid out those elements. So first, I need to clear my container before insert html elements w/ insertAdjacentHTML from our so-called data(hehe).
   containerMovements.innerHTML = '';
@@ -88,6 +86,12 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance}€`;
+};
+calcDisplayBalance(account1.movements);
+
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
     acc.username = acc.owner
@@ -103,7 +107,7 @@ createUsernames(accounts);
 /////////////////////////////////////////////////
 // LECTURES
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 /*
@@ -296,7 +300,7 @@ console.log(deposits);
 const withdrawals = movementsArray.filter(mov => mov < 0);
 console.log(withdrawals);
 // (3) [-400, -650, -130]
-*/
+
 
 console.log(movements);
 // (8) [200, 450, -400, 3000, -650, -130, 70, 1300]
@@ -324,3 +328,4 @@ for (const mov of movements) {
 }
 console.log(total);
 // 3840
+*/
