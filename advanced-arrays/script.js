@@ -413,7 +413,7 @@ TEST DATA 1: [5, 2, 4, 1, 15, 8, 3]
 TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
 
 GOOD LUCK 😀
-*/
+
 
 const calcAverageHumanAge = function (ages) {
   const humanAges = ages.map(age => (age <= 2 ? 2 * age : 16 + age * 4));
@@ -435,3 +435,23 @@ const calcAverageHumanAgeArrow = ages =>
     .length;
 
 console.log(calcAverageHumanAgeArrow([5, 2, 4, 1, 15, 8, 3]));
+*/
+
+// Find method
+
+const firstWithdrawal = movements.find(mov => mov < 0);
+console.log(movements);
+// (8) [200, 450, -400, 3000, -650, -130, 70, 1300]
+console.log(firstWithdrawal);
+// -400
+
+console.log(accounts);
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
+// {owner: 'Jessica Davis', movements: Array(8), interestRate: 1.5, pin: 2222, username: 'jd'}
+
+// JUST FOR FUN -> rewrite code that line 450 with using for of loop
+for (const acc of accounts) {
+  if (acc.owner === 'Jessica Davis') console.log(acc);
+}
