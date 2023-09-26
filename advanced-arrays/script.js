@@ -414,3 +414,24 @@ TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
 
 GOOD LUCK 😀
 */
+
+const calcAverageHumanAge = function (ages) {
+  const humanAges = ages.map(age => (age <= 2 ? 2 * age : 16 + age * 4));
+  const adult = humanAges.filter(age => age >= 18);
+  const averageAge =
+    humanAges.reduce((acc, age) => acc + age, 0) / adult.length;
+  console.log(humanAges);
+  console.log(adult);
+  console.log(averageAge);
+  return averageAge;
+};
+
+const calcAverageHumanAgeArrow = ages =>
+  ages
+    .map(age => (age <= 2 ? 2 * age : 16 + age * 4))
+    .filter(age => age >= 18)
+    .reduce((acc, age) => acc + age, 0) /
+  ages.map(age => (age <= 2 ? 2 * age : 16 + age * 4)).filter(age => age >= 18)
+    .length;
+
+console.log(calcAverageHumanAgeArrow([5, 2, 4, 1, 15, 8, 3]));
