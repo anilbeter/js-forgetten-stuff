@@ -548,7 +548,7 @@ console.log(account);
 for (const acc of accounts) {
   if (acc.owner === 'Jessica Davis') console.log(acc);
 }
-*/
+
 
 // Some method
 console.log(movements);
@@ -569,3 +569,30 @@ console.log(movements.some(mov => mov > 5000));
 
 console.log(movements.every(mov => mov > 0));
 // false;
+*/
+
+// flat method
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat());
+// (8) [1, 2, 3, 4, 5, 6, 7, 8]
+
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat());
+// (6) [Array(2), 3, 4, Array(2), 7, 8]
+
+console.log(arrDeep.flat(2));
+// (8) [1, 2, 3, 4, 5, 6, 7, 8]
+
+const overalBalance = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overalBalance);
+// 17840
+
+// flatMap
+const overalBalance2 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overalBalance2);
+// 17840
