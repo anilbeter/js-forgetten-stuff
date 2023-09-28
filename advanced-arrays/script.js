@@ -563,3 +563,9 @@ console.log(anyDeposits); // true
 // long story short -> some method check IS THERE ANY element that satisfies this condition (in our situation condution is is there any element greater then 0?)
 console.log(movements.some(mov => mov > 5000));
 // false
+
+// Every method
+// Every method checks of ALL OF THE ELEMENTS in the array satisfy the condition
+
+console.log(movements.every(mov => mov > 0));
+// false;
