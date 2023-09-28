@@ -569,7 +569,7 @@ console.log(movements.some(mov => mov > 5000));
 
 console.log(movements.every(mov => mov > 0));
 // false;
-*/
+
 
 // flat method
 const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
@@ -596,3 +596,32 @@ const overalBalance2 = accounts
   .reduce((acc, mov) => acc + mov, 0);
 console.log(overalBalance2);
 // 17840
+*/
+
+// Sorting arrays
+
+// Strings
+const owners = ['Anil', 'Chris', 'John', 'Dennise'];
+console.log(owners.sort());
+// (4) ['Anil', 'Chris', 'Dennise', 'John']
+console.log(owners);
+// (4) ['Anil', 'Chris', 'Dennise', 'John']
+
+// Numbers
+console.log(movements);
+// console.log(movements.sort());
+// (8) [-130, -400, -650, 1300, 200, 3000, 450, 70]
+
+// return < 0, A, B (keep order) (A, B DEN KÜÇÜKSE)
+// return > 0 B, A (switch order) (A, B DEN BÜYÜKSE)
+movements.sort((a, b) => {
+  if (a > b) return 1;
+  if (b > a) return -1;
+});
+console.log(movements);
+// (8) [-650, -400, -130, 70, 200, 450, 1300, 3000]
+
+// line 617 (sorting numbers) shorter way:
+movements.sort((a, b) => a - b);
+console.log(movements);
+// (8) [-650, -400, -130, 70, 200, 450, 1300, 3000]
