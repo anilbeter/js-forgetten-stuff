@@ -182,6 +182,18 @@ btnTransfer.addEventListener('click', function (e) {
   }
 });
 
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+    currentAccount.movements.push(amount);
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = '';
+});
+
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
   if (
@@ -537,3 +549,17 @@ for (const acc of accounts) {
   if (acc.owner === 'Jessica Davis') console.log(acc);
 }
 */
+
+// Some method
+console.log(movements);
+// (8) [200, 450, -400, 3000, -650, -130, 70, 1300]
+
+// Includes --> Equality
+console.log(movements.includes(-130)); // true
+
+// Some --> Condition
+const anyDeposits = movements.some(mov => mov > 0);
+console.log(anyDeposits); // true
+// long story short -> some method check IS THERE ANY element that satisfies this condition (in our situation condution is is there any element greater then 0?)
+console.log(movements.some(mov => mov > 5000));
+// false
