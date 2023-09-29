@@ -596,7 +596,7 @@ const overalBalance2 = accounts
   .reduce((acc, mov) => acc + mov, 0);
 console.log(overalBalance2);
 // 17840
-*/
+
 
 // Sorting arrays
 
@@ -625,3 +625,43 @@ console.log(movements);
 movements.sort((a, b) => a - b);
 console.log(movements);
 // (8) [-650, -400, -130, 70, 200, 450, 1300, 3000]
+*/
+
+// More ways of creating and filling arrays
+console.log([1, 2, 3, 4, 5, 6, 7]);
+console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+
+// Empty arrays + fill method
+const x = new Array(7);
+console.log(x);
+// (7) [empty × 7]
+
+// x.fill(23);
+// console.log(x);
+// (7) [23, 23, 23, 23, 23, 23, 23]
+
+// doldurmaya 3. indexten başla
+x.fill(1, 3);
+console.log(x);
+// (7) [empty × 3, 1, 1, 1, 1]
+
+const arr = [1, 2, 3, 4, 5, 6, 7];
+arr.fill(23, 4, 6);
+console.log(arr);
+// (7) [1, 2, 3, 4, 23, 23, 7]
+// -> index 4'ten başla 6'ya kadar 23 ile doldur(6 dahil değil)
+
+// Array.from
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
+// (7) [1, 1, 1, 1, 1, 1, 1]
+
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(z);
+// (7) [1, 2, 3, 4, 5, 6, 7]
+
+const randomDices = Array.from(
+  { length: 100 },
+  () => Math.trunc(Math.random() * 6) + 1
+);
+console.log(randomDices);
