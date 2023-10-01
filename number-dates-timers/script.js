@@ -317,7 +317,7 @@ console.log((2.7).toFixed(0)); // "3"
 // toFixed() --> Returns a string representing a number in fixed-point notation.
 console.log((2.7).toFixed(3)); // "2.700"
 console.log(+(2.7).toFixed(3)); // 2.7
-*/
+
 
 // Remainder operator
 console.log(5 % 2); // 1
@@ -333,3 +333,14 @@ labelBalance.addEventListener('click', function () {
     if (i % 3 === 0) row.style.backgroundColor = 'blue';
   });
 });
+
+*/
+
+// 284,000,000,000
+const diameter = 284_000_000_000;
+console.log(diameter);
+// 284000000000
+
+const priceCents = 345_99;
+console.log(priceCents);
+// 34599
