@@ -280,7 +280,7 @@ console.log(Number.isFinite(23 / 0)); // false (infinity)
 console.log(Number.isInteger(23)); // true
 console.log(Number.isInteger(23.0)); // true
 console.log(Number.isInteger(23 / 0)); // false
-*/
+
 
 console.log(Math.sqrt(64)); // 8
 console.log(25 ** (1 / 2)); // 5
@@ -317,3 +317,19 @@ console.log((2.7).toFixed(0)); // "3"
 // toFixed() --> Returns a string representing a number in fixed-point notation.
 console.log((2.7).toFixed(3)); // "2.700"
 console.log(+(2.7).toFixed(3)); // 2.7
+*/
+
+// Remainder operator
+console.log(5 % 2); // 1
+console.log(8 % 3); // 2
+
+const isEven = n => n % 2 === 0;
+console.log(isEven(8)); //true
+console.log(isEven(23)); //false
+
+labelBalance.addEventListener('click', function () {
+  [...document.querySelectorAll('.movements__row')].forEach(function (row, i) {
+    if (i % 2 === 0) row.style.backgroundColor = 'orangered';
+    if (i % 3 === 0) row.style.backgroundColor = 'blue';
+  });
+});
