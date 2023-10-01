@@ -251,6 +251,7 @@ btnSort.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
+/*
 console.log(23 === 23.0); // true
 
 // Conversion
@@ -279,3 +280,40 @@ console.log(Number.isFinite(23 / 0)); // false (infinity)
 console.log(Number.isInteger(23)); // true
 console.log(Number.isInteger(23.0)); // true
 console.log(Number.isInteger(23 / 0)); // false
+*/
+
+console.log(Math.sqrt(64)); // 8
+console.log(25 ** (1 / 2)); // 5
+
+console.log(Math.max(5, 18, 23, 36, 104, 34, 8435));
+// 8435
+console.log(Math.min(5, 18, 23, 36, 104, 34, 8435));
+// 5
+
+// calculate area of circle (2 * pi * r)
+console.log(Math.PI * Number.parseFloat('10px') ** 2);
+// 314.1592653589793
+
+// generate random numbers between 1 and 6
+console.log(Math.trunc(Math.random() * 6) + 1);
+
+const randomInt = (min, max) =>
+  Math.trunc(Math.random() * (max - min) + 1) + min;
+
+console.log(randomInt(10, 20));
+
+// Rounding integers
+console.log(Math.trunc(23.82384)); // 23
+console.log(Math.round(23.9)); // 24
+
+console.log(Math.ceil(23.3)); // 24
+console.log(Math.ceil(23.9)); // 24
+
+console.log(Math.floor(23.3)); // 23
+console.log(Math.floor(23.9)); // 23
+
+// Rounding decimals
+console.log((2.7).toFixed(0)); // "3"
+// toFixed() --> Returns a string representing a number in fixed-point notation.
+console.log((2.7).toFixed(3)); // "2.700"
+console.log(+(2.7).toFixed(3)); // 2.7
