@@ -345,7 +345,7 @@ const priceCents = 345_99;
 console.log(priceCents);
 // 34599
 
-*/
+
 
 // biggest number javascript safely represent
 console.log(2 ** 53 - 1);
@@ -367,3 +367,25 @@ console.log(BigInt(813219420423));
 // Operations
 console.log(10000n + 10000n);
 // 20000n
+
+*/
+
+// Creating Dates
+
+// Create a date
+const now = new Date();
+console.log(now);
+// Sun Oct 01 2023 11:21:57 GMT+0300 (GMT+03:00)
+
+console.log(new Date('December 24, 2023'));
+// Sun Dec 24 2023 00:00:00 GMT+0300 (GMT+03:00)
+
+console.log(new Date(account1.movementsDates[0]));
+// Tue Nov 19 2019 00:31:17 GMT+0300 (GMT+03:00)
+
+console.log(new Date(2026, 6, 26, 15, 23));
+// Sun Jul 26 2026 15:23:00 GMT+0300 (GMT+03:00)
+// 6 -> I was expecting june but javascript gave me July, so months are 0 indexed
+
+console.log(new Date(2026, 10, 31));
+// Tue Dec 01 2026 00:00:00 GMT+0300 (GMT+03:00)
