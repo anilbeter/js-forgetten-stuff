@@ -368,7 +368,7 @@ console.log(BigInt(813219420423));
 console.log(10000n + 10000n);
 // 20000n
 
-*/
+
 
 // Creating Dates
 
@@ -389,3 +389,38 @@ console.log(new Date(2026, 6, 26, 15, 23));
 
 console.log(new Date(2026, 10, 31));
 // Tue Dec 01 2026 00:00:00 GMT+0300 (GMT+03:00)
+
+*/
+
+// Working with dates
+const future = new Date(2037, 10, 19, 15, 23);
+console.log(future);
+// Thu Nov 19 2037 15:23:00 GMT+0300 (GMT+03:00)
+
+console.log(future.getFullYear());
+// 2037
+console.log(future.getMonth());
+// 10 -> November in Javascript
+console.log(future.getDate());
+// 19
+console.log(future.getDay());
+// 4 -> day of the week
+
+console.log(future.toISOString());
+// 2037-11-19T12:23:00.000Z
+
+console.log(future.getTime());
+// 2142246180000
+// getTime() --> Returns the stored time value in milliseconds since midnight, January 1, 1970
+
+console.log(new Date(2142246180000));
+// Thu Nov 19 2037 15:23:00 GMT+0300 (GMT+03:00)
+
+console.log(Date.now());
+// 1696149277399
+console.log(new Date(1696149277399));
+// Sun Oct 01 2023 11:34:37 GMT+0300 (GMT+03:00)
+
+future.setFullYear(2026);
+console.log(future);
+// Thu Nov 19 2026 15:23:00 GMT+0300 (GMT+03:00)
