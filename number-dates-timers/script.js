@@ -334,7 +334,7 @@ labelBalance.addEventListener('click', function () {
   });
 });
 
-*/
+
 
 // 284,000,000,000
 const diameter = 284_000_000_000;
@@ -344,3 +344,26 @@ console.log(diameter);
 const priceCents = 345_99;
 console.log(priceCents);
 // 34599
+
+*/
+
+// biggest number javascript safely represent
+console.log(2 ** 53 - 1);
+// 9007199254740991
+
+console.log(Number.MAX_SAFE_INTEGER);
+// 9007199254740991
+
+console.log(8132194204239230314823094823942);
+// 8.13219420423923e+30
+
+// BigInt ->
+console.log(8132194204239230314823094823942n);
+// 8132194204239230314823094823942n
+
+console.log(BigInt(813219420423));
+// 813219420423n
+
+// Operations
+console.log(10000n + 10000n);
+// 20000n
