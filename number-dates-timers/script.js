@@ -456,3 +456,18 @@ console.log(future);
 // Thu Nov 19 2026 15:23:00 GMT+0300 (GMT+03:00)
 
 */
+// Operations With Dates
+
+const future = new Date(2026, 5, 2, 15, 23);
+console.log(future);
+// Tue Jun 02 2026 15:23:00 GMT+0300 (GMT+03:00)
+
+console.log(+future);
+// 1780402980000 -->milliseconds
+
+const calcDaysPassed = (date1, date2) =>
+  Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
+
+const days1 = calcDaysPassed(new Date(2037, 3, 14), new Date(2037, 3, 24));
+console.log(days1);
+// 10
