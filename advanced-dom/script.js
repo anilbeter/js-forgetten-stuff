@@ -92,3 +92,26 @@ message.style.height =
 
 document.documentElement.style.setProperty('--color-primary', 'orangered');
 // css'deki --color-primary'i orangered yaptım
+
+// Attributes
+const logo = document.querySelector('.nav__logo');
+console.log(logo.src);
+// http://127.0.0.1:8080/img/logo.png
+console.log(logo.className);
+// nav__logo
+
+// Non-standard
+console.log(logo.designer);
+// undefined, cuz' designer not standart property that is expected in images
+
+// to make this work:
+console.log(logo.getAttribute('designer'));
+// Ocean
+
+logo.alt = 'Beautiful minimalist logo';
+console.log(logo.alt);
+// Beautiful minimalist logo
+
+logo.setAttribute('company', 'Bankist');
+console.log(logo.getAttribute('company'));
+// Bankist
