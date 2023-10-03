@@ -504,3 +504,25 @@ console.log(days1);
 */
 
 // Internationalizing Dates (Intl)
+
+// Timers
+
+setTimeout(() => console.log('Here is your pizza!😊'), 3000);
+// 3 seconds
+// IMPORTANT -> Code execution doesnt stop
+console.log('anil'); // anil will appear before here is your pizza
+
+const ingredients = ['olives', 'spinach'];
+const pizzaTimer = setTimeout(
+  (ing1, ing2) => {
+    console.log(`Here is your pizza with ${ing1} and ${ing2}`);
+  },
+  2000,
+  ...ingredients
+);
+// Here is your pizza with olives and spinach
+
+if (ingredients.includes('spinach')) {
+  clearTimeout(pizzaTimer);
+}
+// line 518 (pizza string) will not printed to the console
