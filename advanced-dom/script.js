@@ -30,4 +30,48 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-// initial commit
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Selecting Elements
+console.log(document.documentElement);
+console.log(document.head);
+console.log(document.body);
+
+const header = document.querySelector('.header');
+const allSections = document.querySelectorAll('.section');
+console.log(allSections);
+
+document.getElementById('section--1');
+const allButtons = document.getElementsByTagName('button');
+console.log(allButtons);
+
+// sayfadaki bütün div'ler
+console.log(document.getElementsByTagName('div'));
+
+// btn classına sahip olan elementler
+console.log(document.getElementsByClassName('btn'));
+
+// Creating and inserting elements
+const message = document.createElement('div');
+message.classList.add('cookie-message');
+// message.textContent = 'We use cookies!';
+message.innerHTML =
+  'We use cookies! <button class ="btn btn--close-cookie">Got it</button>"';
+
+// header.prepend(message);
+// prepend --> oluşturduğum message node'u, artık header'ın first childı
+
+// yarattğım bu node aynı anda farklı yerde olamaz, sonuçta html de yok 0 dan js ile ben oluşturdum. aynı anda iki farklı yerde olmasını istiyorsam cloneNode() kullanmalıyım
+// header.append(message.cloneNode(true));
+header.append(message);
+
+// header.before(message);
+// --> header ile kardeş oldu ama before olduğu için header dan önce geliyor (header.prepend(message) de ise header ın first childı oluyordu)
+// header.after(message);
+
+// Delete elements
+document
+  .querySelector('.btn--close-cookie')
+  .addEventListener('click', function () {
+    message.remove();
+  });
