@@ -115,3 +115,9 @@ console.log(logo.alt);
 logo.setAttribute('company', 'Bankist');
 console.log(logo.getAttribute('company'));
 // Bankist
+
+// Data attributes
+
+// in html: version-number -> versionNumber
+console.log(logo.dataset.versionNumber);
+// 3.0
