@@ -121,3 +121,12 @@ console.log(logo.getAttribute('company'));
 // in html: version-number -> versionNumber
 console.log(logo.dataset.versionNumber);
 // 3.0
+
+// Classes
+logo.classList.add('anil');
+logo.classList.remove('anil');
+logo.classList.toggle('anil');
+logo.classList.contains('anil'); // not includes
+
+// Don't use. Because this will override all the existing classes
+// logo.className = 'Ocean';
