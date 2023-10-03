@@ -528,3 +528,24 @@ if (ingredients.includes('spinach')) {
   clearTimeout(pizzaTimer);
 }
 // line 518 (pizza string) will not printed to the console
+
+// setInterval
+setInterval(function () {
+  const now = new Date();
+  console.log(now);
+}, 1000);
+// calling function every 1 seconds
+// Tue Oct 03 2023 06:53:10 GMT+0300 (GMT+03:00)
+// Tue Oct 03 2023 06:53:11 GMT+0300 (GMT+03:00)
+// Tue Oct 03 2023 06:53:12 GMT+0300 (GMT+03:00)
+// Tue Oct 03 2023 06:53:13 GMT+0300 (GMT+03:00)
+
+// Building clock
+setInterval(function () {
+  const now = new Date();
+  console.log(
+    `${now.getHours()}:${String(now.getMinutes()).padStart(2, 0)}:${String(
+      now.getSeconds()
+    ).padStart(2, 0)}`
+  );
+}, 1000);
