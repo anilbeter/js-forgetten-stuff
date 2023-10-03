@@ -56,7 +56,7 @@ const message = document.createElement('div');
 message.classList.add('cookie-message');
 // message.textContent = 'We use cookies!';
 message.innerHTML =
-  'We use cookies! <button class ="btn btn--close-cookie">Got it</button>"';
+  'We use cookies! <button class ="btn btn--close-cookie">Got it</button>';
 
 // header.prepend(message);
 // prepend --> oluşturduğum message node'u, artık header'ın first childı
@@ -75,3 +75,20 @@ document
   .addEventListener('click', function () {
     message.remove();
   });
+
+// Styles
+message.style.backgroundColor = '#37383d';
+message.style.width = '120%';
+
+console.log(message.style.height); // nothing
+console.log(message.style.backgroundColor); // rgb(55, 56, 61) (cuz' I set the background color inline)
+
+// If I wanna see most styles -> getComputedStyle
+console.log(getComputedStyle(message).color); // rgb(187, 187, 187)
+console.log(getComputedStyle(message).height); // 48.975px
+
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
+
+document.documentElement.style.setProperty('--color-primary', 'orangered');
+// css'deki --color-primary'i orangered yaptım
