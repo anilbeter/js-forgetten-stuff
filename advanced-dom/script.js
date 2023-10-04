@@ -31,6 +31,7 @@ document.addEventListener('keydown', function (e) {
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
 
 // Selecting Elements
 console.log(document.documentElement);
@@ -90,7 +91,7 @@ console.log(getComputedStyle(message).height); // 48.975px
 message.style.height =
   Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
 
-document.documentElement.style.setProperty('--color-primary', 'orangered');
+// document.documentElement.style.setProperty('--color-primary', 'orangered');
 // css'deki --color-primary'i orangered yaptım
 
 // Attributes
@@ -130,3 +131,26 @@ logo.classList.contains('anil'); // not includes
 
 // Don't use. Because this will override all the existing classes
 // logo.className = 'Ocean';
+
+*/
+
+// Types of Events and Event Handlers
+
+// mouseenter (like hover effect in CSS)
+const h1 = document.querySelector('h1');
+
+const printHello = function (e) {
+  console.log('Heyoo');
+};
+
+h1.addEventListener('mouseenter', printHello);
+
+setTimeout(() => {
+  h1.removeEventListener('mouseenter', printHello);
+}, 3000);
+// 3sn sonra bu eventi kaldırıyorum, daha fazla Heyoo yazmıcak console da
+
+// OLD SCHOOL WAY
+// h1.onmouseenter = function (e) {
+//   console.log('Hello v2');
+// };
