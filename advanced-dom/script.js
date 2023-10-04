@@ -30,7 +30,38 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+// Smooth Scrolling & Page Navigation
+
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function (e) {
+  const section1Coordinates = section1.getBoundingClientRect();
+  console.log(section1Coordinates);
+
+  console.log('Current scroll (X/Y)', window.scrollX, window.scrollY);
+
+  // Scrolling
+
+  // window.scrollTo(
+  //   section1Coordinates.left + window.scrollX,
+  //   section1Coordinates.top + window.scrollY
+  // );
+
+  // w/ Smooth effect
+
+  //   window.scrollTo({
+  //     left: section1Coordinates.left + window.scrollX,
+  //     top: section1Coordinates.top + window.scrollY,
+  //     behavior: 'smooth',
+  //   });
+
+  // More modern way:
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
 
 // Selecting Elements
@@ -155,10 +186,9 @@ setTimeout(() => {
 //   console.log('Hello v2');
 // };
 
-*/
+
 
 // Event Propagation
-
 const randomInt = (min, max) =>
   Math.floor(Math.random() * (max - min + 1) + min);
 
@@ -182,3 +212,5 @@ document.querySelector('.nav').addEventListener('click', function (e) {
   this.style.backgroundColor = randomColor();
   console.log('NAV', e.target, e.currentTarget);
 });
+
+*/
