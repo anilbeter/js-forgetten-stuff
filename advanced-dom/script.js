@@ -61,6 +61,19 @@ btnScrollTo.addEventListener('click', function (e) {
   section1.scrollIntoView({ behavior: 'smooth' });
 });
 
+// Page Navigation
+document.querySelectorAll('.nav__link').forEach(function (el) {
+  el.addEventListener('click', function (e) {
+    e.preventDefault();
+    const id = this.getAttribute('href');
+    console.log(id);
+    // hangi linke tıklarsam onun html deki hrefini vericek
+
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+    // works fine but not effective, use event delegation instead
+  });
+});
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
 
