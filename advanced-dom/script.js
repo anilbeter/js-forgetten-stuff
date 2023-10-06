@@ -237,3 +237,51 @@ document.querySelector('.nav').addEventListener('click', function (e) {
 });
 
 */
+
+// DOM Traversing
+/////////////////////////////////////////////
+const h1 = document.querySelector('h1');
+
+// Going downwards: SELECTING CHILDS
+
+console.log(h1.querySelectorAll('.highlight'));
+// --> NodeList(2) [span.highlight, span.highlight]
+
+// Direct children (everything included)
+console.log(h1.childNodes); // not too useful
+// NodeList(9) [text, comment, text, span.highlight, text, br, text, span.highlight, text]
+
+// use .children instead of childNodes
+console.log(h1.children);
+// HTMLCollection(3) [span.highlight, br, span.highlight]
+
+console.log(h1.firstElementChild);
+console.log(h1.lastElementChild);
+
+// Going upwards: SELECTING PARENTS
+
+console.log(h1.parentNode);
+console.log(h1.parentElement);
+
+// closest method (very important!)
+h1.closest('.header').style.background = 'var(--gradient-secondary)';
+// it selected closest header to h1 element
+// closest parent element that has .header class
+
+h1.closest('h1').style.background = 'var(--gradient-secondary)';
+// bu durumda h1 in kendisi oldu
+
+// querySelector un tam zıttı denilebilir, querySelector chilen seçiyor, closest parent
+
+// Goind sideways: SELECTING SIBLINGS
+
+// Elements
+console.log(h1.previousElementSibling);
+console.log(h1.nextElementSibling);
+
+// for Nodes - not important as Elements (previousElementSibling)
+console.log(h1.previousSibling);
+console.log(h1.nextSibling);
+
+console.log(h1.parentElement.children);
+// h1'in parent elementinin bütün child elementleri
