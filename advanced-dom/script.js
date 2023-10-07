@@ -271,7 +271,7 @@ h1.closest('.header').style.background = 'var(--gradient-secondary)';
 h1.closest('h1').style.background = 'var(--gradient-secondary)';
 // bu durumda h1 in kendisi oldu
 
-// querySelector un tam zıttı denilebilir, querySelector chilen seçiyor, closest parent
+// querySelector un tam zıttı denilebilir, querySelector children seçiyor, closest parent
 
 // Goind sideways: SELECTING SIBLINGS
 
