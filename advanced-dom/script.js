@@ -84,6 +84,63 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   }
 });
 
+// Tab Component
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+// tabs.forEach(t => t.addEventListener('click', () => console.log('TAB')));
+// BAD PRACTICE cuz' if we had 200 tabs, we exact callback function for 200 times. TOO BAD for optimization
+
+// Bunun yerine event delegation kullanalım, parent elemente eventhandler atiyicam (tabsContainer)
+tabsContainer.addEventListener('click', function (e) {
+  // which buttons clicked?
+  // const clicked = e.target;
+
+  // THERE IS A BIG PROGLEM, we have a span inside of button (01, 02, 03), if I clicked that span element, its appear on console but I dont want that. I only interesting with buttons
+  /////////////////////////////////
+  // CONSOLE
+  // -> <button
+  //   class="btn operations__tab operations__tab--1 operations__tab--active"
+  //   data-tab="1"
+  // >
+  //   <span>01</span>Instant Transfers
+  // </button>;
+
+  // -> <span>01</span>
+  ////////////////////////////////
+
+  // To fix that problem; use with closest method instead of only e.target:
+  const clicked = e.target.closest('.operations__tab');
+  // now its only selecting buttons itself, cuz we finding closest parent that had operations__tab class
+
+  // fix null problem: if I clicked inside of container area (except buttons) I got null error:
+
+  // Guard clause
+  if (!clicked) return;
+  // anlamı-> eğer tıkladığım elementin .closest(".operations__tab") / operations__tab parentı yoksa hiçbi şey yapma, sadece return
+
+  // Activate tab
+
+  // remove active classes from all tabs
+  tabs.forEach(t => t.classList.remove('operations__tab--active'));
+
+  // add active class to tab that I clicked
+  clicked.classList.add('operations__tab--active');
+
+  // Activate content area (with Data attribute)
+
+  // remove active classes from all contents
+  document;
+  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
+
+  // add active class to content that I clicked
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    // tab coming from .html (data-tab="1"), REMEMBER I only interesting only the part after that data-
+    .classList.add('operations__content--active');
+});
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
 
@@ -236,7 +293,7 @@ document.querySelector('.nav').addEventListener('click', function (e) {
   console.log('NAV', e.target, e.currentTarget);
 });
 
-*/
+
 
 // DOM Traversing
 /////////////////////////////////////////////
@@ -285,3 +342,5 @@ console.log(h1.nextSibling);
 
 console.log(h1.parentElement.children);
 // h1'in parent elementinin bütün child elementleri
+
+*/
