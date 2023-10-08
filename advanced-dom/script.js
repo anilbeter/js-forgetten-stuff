@@ -174,19 +174,40 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 // This way just works fine but not good for performance. Every second browser calculates scroll position and this is not that we want for good performance.
 
 // A Better Way: The Intersection Observer API
-const observerCallback = function (entries, observer) {
-  entries.forEach(entry => {
-    console.log(entry);
-  });
+// const observerCallback = function (entries, observer) {
+//   entries.forEach(entry => {
+//     console.log(entry);
+//   });
+// };
+
+// const observerOptions = {
+//   root: null,
+//   threshold: [0, 0.2],
+// };
+
+// const observer = new IntersectionObserver(observerCallback, observerOptions);
+// observer.observe(section1);
+
+const header = document.querySelector('.header');
+
+const stickyNav = function (entries) {
+  const [entry] = entries;
+
+  // entry (header), viewport(root: null) ile kesişiyor mu(intersect)? kesişiyorsa yani şu an headerı görüyorsam sticky navi ekleme, zaten en üstteyim nave gerek yok
+  if (entry.isIntersecting) {
+    nav.classList.remove('sticky');
+  } // header ile viewport şu an çakışmıyor di mi? o zaman sticky classı ekle, çünkü yeterince aşağı indim, artık header bölümünü göremiyorum
+  else if (!entry.isIntersecting) {
+    nav.classList.add('sticky');
+  }
 };
 
-const observerOptions = {
+const headerObserver = new IntersectionObserver(stickyNav, {
   root: null,
-  threshold: [0, 0.2],
-};
-
-const observer = new IntersectionObserver(observerCallback, observerOptions);
-observer.observe(section1);
+  threshold: 0,
+  // section1 e geldiğimde sticky nav ın çalışmasını istiyorum, yani header benim viewport umdan tamamen çıkmalı. bu yüzden threshold 0
+});
+headerObserver.observe(header);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
