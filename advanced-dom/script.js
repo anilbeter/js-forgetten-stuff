@@ -189,6 +189,7 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 // observer.observe(section1);
 
 const header = document.querySelector('.header');
+const navHeight = nav.getBoundingClientRect().height;
 
 const stickyNav = function (entries) {
   const [entry] = entries;
@@ -206,6 +207,8 @@ const headerObserver = new IntersectionObserver(stickyNav, {
   root: null,
   threshold: 0,
   // section1 e geldiğimde sticky nav ın çalışmasını istiyorum, yani header benim viewport umdan tamamen çıkmalı. bu yüzden threshold 0
+  rootMargin: `-${navHeight}px`,
+  // section1 e gelmeden nav'ın yüksekliği kadar (90px) önce gözükmesini istiyorum navbar ın, daha estetik gözüküyor
 });
 headerObserver.observe(header);
 
