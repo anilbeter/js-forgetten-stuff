@@ -162,17 +162,31 @@ nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
 
 // Sticky navigation (Scroll Event)
-const initialCoordinates = section1.getBoundingClientRect();
-console.log(initialCoordinates);
+// const initialCoordinates = section1.getBoundingClientRect();
 
-window.addEventListener('scroll', function () {
-  if (this.window.scrollY > initialCoordinates.top) {
-    nav.classList.add('sticky');
-  } else {
-    nav.classList.remove('sticky');
-  }
-});
+// window.addEventListener('scroll', function () {
+//   if (this.window.scrollY > initialCoordinates.top) {
+//     nav.classList.add('sticky');
+//   } else {
+//     nav.classList.remove('sticky');
+//   }
+// });
 // This way just works fine but not good for performance. Every second browser calculates scroll position and this is not that we want for good performance.
+
+// A Better Way: The Intersection Observer API
+const observerCallback = function (entries, observer) {
+  entries.forEach(entry => {
+    console.log(entry);
+  });
+};
+
+const observerOptions = {
+  root: null,
+  threshold: [0, 0.2],
+};
+
+const observer = new IntersectionObserver(observerCallback, observerOptions);
+observer.observe(section1);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
