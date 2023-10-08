@@ -212,6 +212,32 @@ const headerObserver = new IntersectionObserver(stickyNav, {
 });
 headerObserver.observe(header);
 
+// Reveal sections
+const allSections = document.querySelectorAll('.section');
+const revealSection = function (entries, observer) {
+  const [entry] = entries;
+  console.log(entry);
+
+  if (!entry.isIntersecting) {
+    return;
+  }
+  // section'a 0.1% kaldığında (scrolla inerken), section--hidden classını kaldır
+  entry.target.classList.remove('section--hidden');
+
+  // aşağı indim ve observe ile işim bitti, daha fazla takip etmesini istemiyorum, unobserve kullan (sadece 1 kez observeliyor)
+  observer.unobserve(entry.target);
+};
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.1,
+});
+
+allSections.forEach(function (section) {
+  sectionObserver.observe(section);
+  section.classList.add('section--hidden');
+});
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
 
