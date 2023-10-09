@@ -298,6 +298,7 @@ const nextSlide = function () {
   }
 
   goToSlide(currentSlide);
+  activateDot(currentSlide);
 };
 
 btnRight.addEventListener('click', nextSlide);
@@ -311,9 +312,55 @@ const previousSlide = function () {
   }
 
   goToSlide(currentSlide);
+  activateDot(currentSlide);
 };
 
 btnLeft.addEventListener('click', previousSlide);
+
+// Change slides with keys
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'ArrowRight') {
+    nextSlide();
+  } else if (e.key === 'ArrowLeft') {
+    previousSlide();
+  }
+});
+
+// Change slides with dots
+const dotContainer = document.querySelector('.dots');
+const createDots = function () {
+  // slide sayısı kadar dot istediğim için slide'ı loopluyorum
+  slides.forEach(function (_, i) {
+    // creating HTML element (beforeend -> adding as last child)
+    dotContainer.insertAdjacentHTML(
+      'beforeend',
+      `<button class="dots__dot" data-slide="${i}"></button>`
+    );
+  });
+};
+createDots();
+
+// Make dots work (w/ event delegation)
+dotContainer.addEventListener('click', function (e) {
+  // tıkladığım şey dot mu değil mi onu kontrol ediyorum
+  if (e.target.classList.contains('dots__dot')) {
+    const { slide } = e.target.dataset;
+    goToSlide(slide);
+    activateDot(slide);
+  }
+});
+
+// Activate dot visual effect
+const activateDot = function (slide) {
+  document
+    .querySelectorAll('.dots__dot')
+    .forEach(dot => dot.classList.remove('dots__dot--active'));
+
+  document
+    .querySelector(`.dots__dot[data-slide="${slide}"]`)
+    .classList.add('dots__dot--active');
+};
+activateDot(0);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
