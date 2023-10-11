@@ -32,3 +32,31 @@ console.log(billie instanceof Person);
 const micheal = 'micheal';
 console.log(micheal instanceof Person);
 // false
+
+// Prototypes
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
+
+anil.calcAge();
+// 53
+
+console.log(anil.__proto__);
+// {calcAge: ƒ, constructor: ƒ}
+
+console.log(Person.prototype.isPrototypeOf(anil));
+// true
+console.log(Person.prototype.isPrototypeOf(Person));
+// false
+
+Person.prototype.favColor = 'blue';
+console.log(anil.favColor);
+// blue
+console.log(billie.favColor);
+// blue
+
+console.log(anil.hasOwnProperty('firstName'));
+// true
+console.log(anil.hasOwnProperty('favColor'));
+// false
+// false because favColor property not inside of anil object, i added it externally (Person.prototype.favColor = 'blue'). It can access to it through prototype
