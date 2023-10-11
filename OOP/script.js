@@ -1,5 +1,6 @@
 'use strict';
 
+/*
 // Constructor Function
 const Person = function (firstName, birthYear) {
   // Instance properties
@@ -81,7 +82,7 @@ console.log(arr.unique());
 
 // Coding Challenge #1
 
-/* 
+
 1. Use a constructor function to implement a Car. A car has a make and a speed property. The speed property is the current speed of the car in km/h;
 2. Implement an 'accelerate' method that will increase the car's speed by 10, and log the new speed to the console;
 3. Implement a 'brake' method that will decrease the car's speed by 5, and log the new speed to the console;
@@ -91,7 +92,7 @@ DATA CAR 1: 'BMW' going at 120 km/h
 DATA CAR 2: 'Mercedes' going at 95 km/h
 
 GOOD LUCK 😀
-*/
+
 
 const Car = function (make, speed) {
   this.make = make;
@@ -111,3 +112,49 @@ const bmw = new Car('BMW', 120);
 const mercedes = new Car('Mercedes', 95);
 bmw.accelerate();
 bmw.brake();
+
+*/
+// ES6 Classes
+
+// Class expression
+// const PersonCl = class {}
+
+// Class declaration
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+
+  // Methods will be added to .prototype property (just like prototype inheritance)
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+
+  neverGaveUp() {
+    console.log('HEY! DREAMS ONLY COME TRUE TO THOSE WHO TRULY WANT THEM!');
+  }
+}
+
+const jessica = new PersonCl('Jessica', 1996);
+console.log(jessica);
+// PersonCl {firstName: 'Jessica', birthYear: 1996}
+
+jessica.neverGaveUp();
+// HEY! DREAMS ONLY COME TRUE TO THOSE WHO TRULY WANT THEM!
+jessica.calcAge();
+// 41
+console.log(jessica.hasOwnProperty('calcAge'));
+// false
+
+// Manually adding method
+PersonCl.prototype.greet = function () {
+  console.log(`Hello ${this.firstName}`);
+};
+jessica.greet();
+// Hello Jessica
+
+// Notes about CLASSES
+// 1. Classes are NOT hoisted
+// 2. Classes are first-class citizes
+// 3. Classes are executed in strict mode
