@@ -134,11 +134,18 @@ class PersonCl {
   neverGaveUp() {
     console.log('HEY! DREAMS ONLY COME TRUE TO THOSE WHO TRULY WANT THEM!');
   }
+
+  get age() {
+    return 2037 - this.birthYear;
+  }
 }
 
 const jessica = new PersonCl('Jessica', 1996);
 console.log(jessica);
 // PersonCl {firstName: 'Jessica', birthYear: 1996}
+
+console.log(jessica.age);
+// 41
 
 jessica.neverGaveUp();
 // HEY! DREAMS ONLY COME TRUE TO THOSE WHO TRULY WANT THEM!
@@ -158,3 +165,25 @@ jessica.greet();
 // 1. Classes are NOT hoisted
 // 2. Classes are first-class citizes
 // 3. Classes are executed in strict mode
+
+// Setters and Getters
+
+const account = {
+  owner: 'anil',
+  movements: [200, 305, 120, 300],
+
+  get latest() {
+    return this.movements.slice(-1).pop();
+  },
+
+  set latest(mov) {
+    this.movements.push(mov);
+  },
+};
+
+console.log(account.latest);
+// 300
+
+account.latest = 50;
+console.log(account.movements);
+// (5) [200, 305, 120, 300, 50]
