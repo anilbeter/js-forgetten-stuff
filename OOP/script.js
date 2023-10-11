@@ -60,3 +60,21 @@ console.log(anil.hasOwnProperty('firstName'));
 console.log(anil.hasOwnProperty('favColor'));
 // false
 // false because favColor property not inside of anil object, i added it externally (Person.prototype.favColor = 'blue'). It can access to it through prototype
+
+// Object.prototype (top of prototype chain)
+console.log(anil.__proto__.__proto__);
+
+console.dir(Person.prototype.constructor);
+// ƒ Person(firstName, birthYear)
+
+const arr = [3, 4, 5, 6, 23, 39, 3, 3, 4, 23];
+console.log(arr.__proto__ === Array.prototype);
+// true
+
+console.log(arr.__proto__.__proto__);
+
+Array.prototype.unique = function () {
+  return [...new Set(this)];
+};
+console.log(arr.unique());
+// (6) [3, 4, 5, 6, 23, 39]
