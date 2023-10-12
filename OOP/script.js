@@ -222,3 +222,29 @@ console.log(account.latest);
 account.latest = 50;
 console.log(account.movements);
 // (5) [200, 305, 120, 300, 50]
+
+// Object.create
+const PersonProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  },
+};
+
+const steven = Object.create(PersonProto);
+steven.name = 'Steven';
+steven.birthYear = 2001;
+steven.calcAge();
+// 36
+
+console.log(steven.hasOwnProperty('name'));
+// true
+console.log(steven.hasOwnProperty('calcAge'));
+// false
+// ITS FALSE because calcAge is inherited prototype
+console.log(steven);
+// {name: 'Steven', birthYear: 2001}
+// birthYear: 2001
+// name: "Steven"
+// [[Prototype]]: Object
+
+const ocean = Object.create(PersonProto);
