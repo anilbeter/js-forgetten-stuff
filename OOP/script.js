@@ -331,7 +331,7 @@ console.log(ford);
 
 // set speedUS ile US'de yaşıyan insanları hedef alıyorum, yani onlar mil cinsinden girecek ama set speedUS hızı km ye çeviricek 1*6 ile çarparak
 // get speedUS ise km olan hızı mile çevirerek mil/h cinsinden hızı veriyor
-*/
+
 
 //////////////////////////////
 // Inheritance Between "Classes": Constructor Functions
@@ -385,7 +385,7 @@ console.dir(Student.prototype.constructor);
 DATA CAR 1: 'Tesla' going at 120 km/h, with a charge of 23%
 
 GOOD LUCK 😀
-*/
+
 
 const Car = function (make, speed) {
   this.make = make;
@@ -418,3 +418,60 @@ tesla.accelerate();
 console.log(tesla);
 tesla.chargeBattery(90);
 console.log(tesla);
+
+*/
+/////////////////////////////////////////////
+// Inheritance Between "Classes": ES6 Classes
+
+class PersonCl {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
+
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+
+  get age() {
+    return 2037 - this.birthYear;
+  }
+
+  set fullName(name) {
+    if (name.includes(' ')) {
+      this._fullName = name;
+    } else alert(`${name} is not a full name!`);
+  }
+
+  get fullName() {
+    return this._fullName;
+  }
+
+  static hey() {
+    console.log('Hey there :)');
+  }
+}
+
+class StudentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    // Parent constructor'ından aldıgım icin super methodunu kullanıyorum (PersonCl.call() gibi)
+    // Always needs to happen first!!!
+    super(fullName, birthYear);
+    this.course = course;
+  }
+
+  introduce() {
+    console.log(
+      `My name is ${this.fullName.split(' ')[0]} and I study ${this.course}`
+    );
+  }
+}
+
+const anil = new StudentCl('Anil Beter', 1999, 'Industrial Engineering');
+console.log(anil);
+// StudentCl {_fullName: 'Anil Beter', birthYear: 1999, course: 'Industrial Engineering'}
+anil.introduce();
+// My name is Anil and I study Industrial Engineering
+
+anil.calcAge();
+// 38
