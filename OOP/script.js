@@ -228,11 +228,16 @@ const PersonProto = {
   calcAge() {
     console.log(2037 - this.birthYear);
   },
+
+  // Better way to set properties for new objects
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
 };
 
 const steven = Object.create(PersonProto);
-steven.name = 'Steven';
-steven.birthYear = 2001;
+steven.init('Steven', 2001);
 steven.calcAge();
 // 36
 
@@ -243,8 +248,14 @@ console.log(steven.hasOwnProperty('calcAge'));
 // ITS FALSE because calcAge is inherited prototype
 console.log(steven);
 // {name: 'Steven', birthYear: 2001}
+// -->
 // birthYear: 2001
 // name: "Steven"
 // [[Prototype]]: Object
 
 const ocean = Object.create(PersonProto);
+ocean.init('Ocean', 1997);
+console.log(ocean);
+// {firstName: 'Ocean', birthYear: 1997}
+ocean.calcAge();
+// 40
