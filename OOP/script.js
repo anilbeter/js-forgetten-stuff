@@ -1,5 +1,6 @@
 'use strict';
 
+/*
 // Constructor Function
 const Person = function (firstName, birthYear) {
   // Instance properties
@@ -44,7 +45,7 @@ Person.hey();
 // Uncaught TypeError: anil.hey is not a function at script.js:43:6
 // -> so Static methods are not inherited
 
-/*
+
 
 // Prototypes
 Person.prototype.calcAge = function () {
@@ -125,7 +126,7 @@ const mercedes = new Car('Mercedes', 95);
 bmw.accelerate();
 bmw.brake();
 
-*/
+
 // ES6 Classes
 
 // Class expression
@@ -280,7 +281,7 @@ ocean.calcAge();
 DATA CAR 1: 'Ford' going at 120 km/h
 
 GOOD LUCK 😀
-*/
+
 
 class CarCl {
   constructor(make, speed) {
@@ -330,3 +331,33 @@ console.log(ford);
 
 // set speedUS ile US'de yaşıyan insanları hedef alıyorum, yani onlar mil cinsinden girecek ama set speedUS hızı km ye çeviricek 1*6 ile çarparak
 // get speedUS ise km olan hızı mile çevirerek mil/h cinsinden hızı veriyor
+*/
+
+//////////////////////////////
+// Inheritance Between "Classes": Constructor Functions
+
+const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
+
+const Student = function (firstName, birthYear, course) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+  this.course = course;
+};
+
+const mike = new Student('Mike', 2020, 'Computer Science');
+
+Student.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+
+console.log(mike);
+// Student {firstName: 'Mike', birthYear: 2020, course: 'Computer Science'}
+mike.introduce();
+// My name is Mike and I study Computer Science
