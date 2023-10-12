@@ -1,6 +1,5 @@
 'use strict';
 
-/*
 // Constructor Function
 const Person = function (firstName, birthYear) {
   // Instance properties
@@ -33,6 +32,19 @@ console.log(billie instanceof Person);
 const micheal = 'micheal';
 console.log(micheal instanceof Person);
 // false
+
+Person.hey = function () {
+  console.log('Hey there :)');
+};
+
+Person.hey();
+// Hey there :)
+
+// anil.hey();
+// Uncaught TypeError: anil.hey is not a function at script.js:43:6
+// -> so Static methods are not inherited
+
+/*
 
 // Prototypes
 Person.prototype.calcAge = function () {
@@ -126,6 +138,8 @@ class PersonCl {
     this.birthYear = birthYear;
   }
 
+  // Instance methods
+  // Methods will be added to .prototype property
   calcAge() {
     console.log(2037 - this.birthYear);
   }
@@ -147,6 +161,11 @@ class PersonCl {
 
   get fullName() {
     return this._fullName;
+  }
+
+  // Static method
+  static hey() {
+    console.log('Hey there :)');
   }
 }
 
@@ -174,6 +193,13 @@ jessica.greet();
 // 1. Classes are NOT hoisted
 // 2. Classes are first-class citizes
 // 3. Classes are executed in strict mode
+
+PersonCl.hey();
+// Hey there :)
+// jessica.hey();
+// script.js:199 Uncaught TypeError: jessica.hey is not a function
+
+// Long story short: static methods not available for instances
 
 // Setters and Getters
 
