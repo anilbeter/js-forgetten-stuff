@@ -346,12 +346,15 @@ Person.prototype.calcAge = function () {
 };
 
 const Student = function (firstName, birthYear, course) {
-  this.firstName = firstName;
-  this.birthYear = birthYear;
+  Person.call(this, firstName, birthYear);
   this.course = course;
 };
 
+Student.prototype = Object.create(Person.prototype);
+// Now Student prototype inherits Person prototype
 const mike = new Student('Mike', 2020, 'Computer Science');
+mike.calcAge();
+// 17
 
 Student.prototype.introduce = function () {
   console.log(`My name is ${this.firstName} and I study ${this.course}`);
@@ -361,3 +364,11 @@ console.log(mike);
 // Student {firstName: 'Mike', birthYear: 2020, course: 'Computer Science'}
 mike.introduce();
 // My name is Mike and I study Computer Science
+
+console.dir(Student.prototype.constructor);
+// ƒ Person(firstName, birthYear)
+// Person olarak gösteriyor ama yanlış, Student olmalı
+// Fixlemek için:
+Student.prototype.constructor = Student;
+console.dir(Student.prototype.constructor);
+// ƒ Student(firstName, birthYear, course)
