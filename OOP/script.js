@@ -476,7 +476,7 @@ anil.introduce();
 anil.calcAge();
 // 38
 
-*/
+
 
 // Inheritance Between "Classes": Object Create
 // (linking objects together)
@@ -516,3 +516,24 @@ steve.introduce();
 // script.js:512 Uncaught TypeError: anil.introduce is not a function
 steve.calcAge();
 // 35
+
+*/
+
+class Account {
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    this.pin = pin;
+    this.movements = [];
+    this.locale = navigator.language;
+
+    console.log(`Thanks for opening an account, ${owner}`);
+  }
+}
+
+const acc1 = new Account('Anil', 'USD', 2502);
+
+acc1.movements.push(250);
+acc1.movements.push(-130);
+console.log(acc1);
+// Account {owner: 'Anil', currency: 'USD', pin: 2502, movements: Array(2), locale: 'tr'}
