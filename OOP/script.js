@@ -529,11 +529,40 @@ class Account {
 
     console.log(`Thanks for opening an account, ${owner}`);
   }
+
+  // Public interface
+  deposit(val) {
+    this.movements.push(val);
+  }
+
+  withdraw(val) {
+    this.deposit(-val);
+  }
+
+  approveLoan(val) {
+    return true;
+  }
+
+  requestLoan(val) {
+    if (this.approveLoan(val)) {
+      this.deposit(val);
+      console.log('Loan approved');
+    }
+  }
 }
 
 const acc1 = new Account('Anil', 'USD', 2502);
 
-acc1.movements.push(250);
-acc1.movements.push(-130);
-console.log(acc1);
-// Account {owner: 'Anil', currency: 'USD', pin: 2502, movements: Array(2), locale: 'tr'}
+// acc1.movements.push(250);
+// acc1.movements.push(-130);
+// However, adding manually values like push method bad practice. Create methods instead of that
+
+acc1.deposit(250);
+acc1.withdraw(120);
+console.log(acc1.movements);
+// (2) [250, -120]
+
+acc1.requestLoan(1000);
+// Loan approved
+console.log(acc1.movements);
+// (3) [250, -120, 1000]
