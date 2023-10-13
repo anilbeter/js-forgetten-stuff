@@ -519,50 +519,76 @@ steve.calcAge();
 
 */
 
+// 1) Public fields
+// 2) Private fields
+// 3) Public methods
+// 4) Private methods
+// static
+
 class Account {
+  // 1) Public fields (instances)
+  locale = navigator.language;
+
+  // 2) Private fields
+  #movements = [];
+  #pin;
+
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
-    this._pin = pin;
-    // Protected property
-    this._movements = [];
-    this.locale = navigator.language;
+    this.#pin = pin;
+    // this._movements = [];
+    // this.locale = navigator.language;
 
     console.log(`Thanks for opening an account, ${owner}`);
   }
 
+  // 3) Public methods
+
   // Public interface
   getMovements() {
-    return this._movements;
+    return this.#movements;
   }
 
   deposit(val) {
-    this._movements.push(val);
+    this.#movements.push(val);
   }
 
   withdraw(val) {
     this.deposit(-val);
   }
 
-  _approveLoan(val) {
-    return true;
-  }
-
   requestLoan(val) {
-    if (this._approveLoan(val)) {
+    if (this.#approveLoan(val)) {
       this.deposit(val);
       console.log('Loan approved');
     }
   }
+
+  // Remember -> static methodu instancelar kullanamıyor, sadece classın kendisi kullanabiliyor
+  static helper() {
+    console.log('Helper');
+  }
+
+  // 4) Private methods
+  #approveLoan(val) {
+    return true;
+  }
 }
 
 const acc1 = new Account('Anil', 'USD', 2502);
-
-acc1._movements.push(250);
-acc1._movements.push(250);
+acc1.deposit(250);
+acc1.withdraw(140);
+acc1.requestLoan(1000);
 console.log(acc1.getMovements());
-// (2) [250, 250]
+// (3) [250, -140, 1000]
+console.log(acc1);
+// Account {locale: 'tr', owner: 'Anil', currency: 'USD', #pin: 2502, #movements: Array(3)}
 
-console.log(acc1._movements);
-// (2) [250, 250]
-// --> Hala dışarıdan value ekleyebiliyorum ama BUNU YAPMAMAM GEREK. Ben ve diğer devler başında _ olduğu için bunun protected oldugunu zaten biliyo ve buna dışarıdan dokunmamam gerek
+// console.log(acc1.#movements);
+// Uncaught SyntaxError: Private field '#movements' must be declared in an enclosing class
+
+// console.log(acc1.#pin);
+// Uncaught SyntaxError: Private field '#pin' must be declared in an enclosing class
+
+Account.helper();
