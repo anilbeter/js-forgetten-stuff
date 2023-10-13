@@ -419,7 +419,7 @@ console.log(tesla);
 tesla.chargeBattery(90);
 console.log(tesla);
 
-*/
+
 /////////////////////////////////////////////
 // Inheritance Between "Classes": ES6 Classes
 
@@ -475,3 +475,44 @@ anil.introduce();
 
 anil.calcAge();
 // 38
+
+*/
+
+// Inheritance Between "Classes": Object Create
+// (linking objects together)
+
+const PersonProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  },
+
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
+
+const anil = Object.create(PersonProto);
+anil.init('Anil', 1999);
+console.log(anil);
+// {firstName: 'Anil', birthYear: 1999}
+
+const StudentProto = Object.create(PersonProto);
+StudentProto.init = function (firstName, birthYear, course) {
+  PersonProto.init.call(this, firstName, birthYear);
+  this.course = course;
+};
+
+StudentProto.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+
+const steve = Object.create(StudentProto);
+steve.init('Steve', 2002, 'Computer Sciense');
+console.log(steve);
+// {firstName: 'Steve', birthYear: 2002, course: 'Computer Sciense'}
+steve.introduce();
+// anil.introduce();
+// script.js:512 Uncaught TypeError: anil.introduce is not a function
+steve.calcAge();
+// 35
