@@ -523,28 +523,33 @@ class Account {
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
-    this.pin = pin;
-    this.movements = [];
+    this._pin = pin;
+    // Protected property
+    this._movements = [];
     this.locale = navigator.language;
 
     console.log(`Thanks for opening an account, ${owner}`);
   }
 
   // Public interface
+  getMovements() {
+    return this._movements;
+  }
+
   deposit(val) {
-    this.movements.push(val);
+    this._movements.push(val);
   }
 
   withdraw(val) {
     this.deposit(-val);
   }
 
-  approveLoan(val) {
+  _approveLoan(val) {
     return true;
   }
 
   requestLoan(val) {
-    if (this.approveLoan(val)) {
+    if (this._approveLoan(val)) {
       this.deposit(val);
       console.log('Loan approved');
     }
@@ -553,16 +558,11 @@ class Account {
 
 const acc1 = new Account('Anil', 'USD', 2502);
 
-// acc1.movements.push(250);
-// acc1.movements.push(-130);
-// However, adding manually values like push method bad practice. Create methods instead of that
+acc1._movements.push(250);
+acc1._movements.push(250);
+console.log(acc1.getMovements());
+// (2) [250, 250]
 
-acc1.deposit(250);
-acc1.withdraw(120);
-console.log(acc1.movements);
-// (2) [250, -120]
-
-acc1.requestLoan(1000);
-// Loan approved
-console.log(acc1.movements);
-// (3) [250, -120, 1000]
+console.log(acc1._movements);
+// (2) [250, 250]
+// --> Hala dışarıdan value ekleyebiliyorum ama BUNU YAPMAMAM GEREK. Ben ve diğer devler başında _ olduğu için bunun protected oldugunu zaten biliyo ve buna dışarıdan dokunmamam gerek
